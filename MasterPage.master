@@ -11,13 +11,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>Dylan Steele Portfolio</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,11 +28,11 @@
 
 </head>
 
-<body>
+<body >
 
     <div class="container-fluid">
         <div class="row">
-            <div class="page-header" style="text-align:center">
+            <div class="page-header" style="text-align:center;">
             <h1>Dylan Steele's Portfolio</h1>
         </div>
         </div>
@@ -71,12 +71,12 @@
   
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="../js/jquery-3.1.1.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
+    
     <!-- Menu Toggle Script -->
     <script>
         $("#menu-toggle").click(function (e) {
