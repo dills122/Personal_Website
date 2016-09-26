@@ -2,7 +2,7 @@
 
 <asp:Content ContentPlaceHolderID="Content1" runat="server">
 
-    <div class="container">
+    <div class="container" style="width:50%; margin-left:auto; margin-right:auto;">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h1>About Me</h1>

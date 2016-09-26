@@ -25,19 +25,29 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .row {
+            overflow: hidden;
+        }
 
+        [class*="col-"] {
+            margin-bottom: -99999px;
+            padding-bottom: 99999px;
+        }
+    </style>
 </head>
 
-<body >
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="page-header" style="text-align:center;">
-            <h1>Dylan Steele's Portfolio</h1>
+<body>
+    <div class="container-fluid" style="margin-top: -40px;">
+        <div class="row row-bottom-margin">
+            <div class=" jumbotron" style="text-align: center; background-color: #333333; border-radius: 0px;">
+                <h1 style="color: #ffffff">Dylan Steele's Portfolio</h1>
+            </div>
         </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+        <div class="row" style="margin-top: -30px;">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12" style="background-color: #f2f2f2">
+                <br />
+                <br />
                 <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="\main.aspx">Home</a></li>
                     <li class="active"><a href="\about.aspx">About</a></li>
@@ -55,25 +65,36 @@
                 <br />
                 <br />
             </div>
-            <div class="col-lg-10 col-md-4 col-sm-8 col-xs-12">
-                
+            <div class="col-lg-8 col-md-4 col-sm-8 col-xs-12" style="background-color: #f2f2f2">
+
                 <asp:ContentPlaceHolder ID="Content1" runat="server"></asp:ContentPlaceHolder>
             </div>
-            
-        </div>
-        <div class="row">
-            <div class="panel-footer">
-            <div style="width:auto; margin-left:auto; margin-right:auto; text-align:center;" >
-                This Website was created and is currently maintained by Dylan Steele.
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12" style="background-color: #f2f2f2">
+                <br />
+                <br />
+                <div style="height: 250px; width: 250px; background-color: #808080"></div>
+                <br />
+                <br />
+                <div style="height: 250px; width: 250px; background-color: #808080"></div>
                 <br />
                 <br />
             </div>
         </div>
+        <div class="row">
+            <div class="panel-footer" style="background-color: #333333">
+                <div style="width: auto; margin-left: auto; margin-right: auto; text-align: center;">
+                    <br />
+                    <br />
+                    <p style="font-size: medium; color: #ffffff">This Website was created and is currently maintained by Dylan Steele.</p>
+                    <br />
+                    <br />
+                </div>
+            </div>
         </div>
 
     </div>
 
-  
+
     <!-- /#wrapper -->
 
     <script src="../js/jquery-3.1.1.min.js"></script>
@@ -81,7 +102,7 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 
-    
+
     <!-- Menu Toggle Script -->
     <script>
         $("#menu-toggle").click(function (e) {
