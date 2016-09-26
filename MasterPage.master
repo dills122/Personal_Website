@@ -42,15 +42,18 @@
                     <li class="active"><a href="\main.aspx">Home</a></li>
                     <li class="active"><a href="\about.aspx">About</a></li>
                     <!-- Place to add all of the page links for specific projects -->
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="">Projects
-                            <span class="caret">
-
-                            </span>
-                        </a>
-                    </li>
-
                 </ul>
+                <h3>Code Examples</h3>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="\Code-Examples\asp-net.aspx">ASP.NET</a></li>
+                    <li class="active"><a href="\Code-Examples\c-system.aspx">C System</a></li>
+                    <li class="active"><a href="\Code-Examples\cplusplus.aspx">C++</a></li>
+                    <li class="active"><a href="\Code-Examples\java.aspx">Java</a></li>
+                    <li class="active"><a href="\Code-Examples\vb-net.aspx">VB.NET</a></li>
+                    <!-- Place to add all of the page links for specific projects -->
+                </ul>
+                <br />
+                <br />
             </div>
             <div class="col-lg-10 col-md-4 col-sm-8 col-xs-12">
                 
@@ -62,6 +65,8 @@
             <div class="panel-footer">
             <div style="width:auto; margin-left:auto; margin-right:auto; text-align:center;" >
                 This Website was created and is currently maintained by Dylan Steele.
+                <br />
+                <br />
             </div>
         </div>
         </div>
