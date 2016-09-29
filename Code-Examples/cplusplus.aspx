@@ -2,11 +2,16 @@
 
 
 <asp:Content ContentPlaceHolderID="Content1" runat="server">
+
+    <link rel="stylesheet" href="../css/foundation.css">
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
     <link href="../css/bootstrap.css" rel="stylesheet" />
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Need to add in the functionality for this bar ot scroll to positions on the page, -->
-        <!-- possible make the the navbar stay at the top as you scroll -->
+    <!-- possible make the the navbar stay at the top as you scroll -->
     <script src="../js/jquery-3.1.1.min.js"></script>
 
     <script type="text/javascript">

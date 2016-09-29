@@ -2,7 +2,9 @@
 
 
 <asp:Content ContentPlaceHolderID="Content1" runat="server">
-
+    <link rel="stylesheet" href="../css/foundation.css">
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <div class="container-fluid">
         <div style="text-align: center">
             <h2>Auto Complete Function</h2>
@@ -15,7 +17,7 @@
 
         </div>
         <div class="row">
-             
+
             <div class="col-xs-6 col-lg-6 col-md-6" style="text-align: left; width: 50%">
                 <div>
                     <h3>Before Rewrite</h3>

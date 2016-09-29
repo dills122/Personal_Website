@@ -2,12 +2,15 @@
 
 
 <asp:Content ContentPlaceHolderID="Content1" runat="server">
+    <link rel="stylesheet" href="../css/foundation.css">
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <div>
         <h3>Multi-Threaded Word Counter</h3>
         <br />
         <h4>Description: </h4>
-        <p style="margin-right: 2cm; font-size:medium">
-            This program takes advantage of the Unix system's functions as in <code> pipes </code>and <code>processes</code>. It divides its file that is to be 
+        <p style="margin-right: 2cm; font-size: medium">
+            This program takes advantage of the Unix system's functions as in <code>pipes </code>and <code>processes</code>. It divides its file that is to be 
             counted into n smaller chuncks and creates n-1 <code>processes</code> to handle the counting of the words.
             After a process has finished computing its word count, it will start to send back its completed list of words and 
             there number of occurances through <code>pipes</code>. Finally the main process will recieve the data through <code>pipes</code> and combines
