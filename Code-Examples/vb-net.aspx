@@ -41,7 +41,7 @@
                     </p>
                 </div>
 
-                <pre class="pre-scrollable" style="max-height: 800px"><code> 
+                <pre class="pre-scrollable" style="max-height: 800px"><code class=""> 
     ''' <summary>
     ''' Auto Complete Function that uses Auto Complete Rules to total values in cells and disable them
     ''' Only is usable with Advanced Auto Complete, Migrating all other rules to this type
