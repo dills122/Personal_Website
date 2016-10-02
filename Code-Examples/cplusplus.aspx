@@ -2,38 +2,27 @@
 
 
 <asp:Content ContentPlaceHolderID="Content1" runat="server">
-
+    <!-- Adding Code coloring to my code examples -->
     <link rel="stylesheet" href="../css/foundation.css">
     <script src="../js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-
+    <!-- Bootstrap addtions -->
     <link href="../css/bootstrap.css" rel="stylesheet" />
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
-
-    <!-- Need to add in the functionality for this bar ot scroll to positions on the page, -->
-    <!-- possible make the the navbar stay at the top as you scroll -->
     <script src="../js/jquery-3.1.1.min.js"></script>
 
-    <script type="text/javascript">
-        
-    </script>
-
-    <nav class=" navbar navbar-dark">
-        <ul class="nav navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Number of Paths <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Post Fix Expressions</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Binary Search Tree</a>
-            </li>
-        </ul>
-    </nav>
-
-
-    <div id="top">
+    <div class="container">
+        <div class="navbar navbar-default" id="mainNavBar">
+            <div class=" container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="javascript:void(0)" onclick="document.getElementById('num-of-paths').scrollIntoView(true);">Number of Paths</a></li>
+                    <li><a href="javascript:void(0)"  onclick="document.getElementById('post-fix').scrollIntoView(true);">Post Fix Expressions</a></li>
+                    <li><a href="javascript:void(0)"  onclick="document.getElementById('BST').scrollIntoView(true);" >Binary Search Tree</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="num-of-paths">
         <div>
             <h3>Number of available paths</h3>
             <br />
@@ -48,10 +37,7 @@
 
          /**
 *proj7.cpp
-*
-*Name: Dylan Steele
-*
-*PSU ID: 967460512
+
 *
 *CMPSC122 Summer 2015
 *
@@ -577,7 +563,8 @@ private:
         </div>
 
     </div>
-
+    <br />
+    <br />
 </asp:Content>
 
 
