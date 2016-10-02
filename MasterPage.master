@@ -87,6 +87,9 @@
                     <br />
                     <br />
                 </div>
+                <div style="width: auto; margin-left: auto; margin-right: auto; text-align: right;">
+                    <a href="..\contact-me.aspx" style=" font-size:x-large; color:#ffffff;">Contact Me</a>
+                </div>
             </div>
         </div>
 
