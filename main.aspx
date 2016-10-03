@@ -3,6 +3,72 @@
 
 
 <asp:Content ContentPlaceHolderID="Content1" runat="server">
+    <script src="js/fusioncharts.js"></script>
+
+    <script type="text/javascript">
+  FusionCharts.ready(function(){
+    var fusioncharts = new FusionCharts({
+    type: 'bar2d',
+    renderAt: 'chart-container',
+    width: '500',
+    height: '300',
+    dataFormat: 'json',
+    dataSource: {
+        "chart": {
+            "caption": "Programming Skills",
+            "subCaption": "Most used",
+            "yAxisName": "Proficiency",
+            "paletteColors": "#0075c2",
+            "bgColor": "#ffffff",
+            "showBorder": "0",
+            "showCanvasBorder": "0",
+            "usePlotGradientColor": "0",
+            "plotBorderAlpha": "10",
+            "valueFontColor": "#ffffff",
+            "showAxisLines": "1",
+            "showYAxisValues":'0',
+            "axisLineAlpha": "25",
+            "divLineAlpha": "10",
+            "alignCaptionWithCanvas": "0",
+            "showAlternateVGridColor": "0",
+            "captionFontSize": "14",
+            "subcaptionFontSize": "14",
+            "subcaptionFontBold": "0",
+            "toolTipColor": "#ffffff",
+            "toolTipBorderThickness": "0",
+            "toolTipBgColor": "#000000",
+            "toolTipBgAlpha": "80",
+            "toolTipBorderRadius": "2",
+            "toolTipPadding": "5"
+        },
+
+        "data": [{
+            "label": "VB.NET",
+            "value": "775",
+            "showValue": "0"
+        }, {
+            "label": "Java",
+            "value": "650"
+        }, {
+            "label": "ASP.NET",
+            "value": "600"
+        }, {
+            "label": "HTML/CSS",
+            "value": "600"
+        }, {
+            "label": "C++",
+            "value": "600"
+        }, {
+            "label": "C#",
+            "value": "550"
+        }]
+    }
+}
+);
+    fusioncharts.render();
+});
+</script>
+
     <asp:Panel ID="Mainpnl" runat="server" HorizontalAlign="Center">
         <div style="margin-left: auto; margin-right: auto">
             <div style="text-align: left">
@@ -69,6 +135,13 @@
                             <li>Linux (Ubuntu and Debian)</li>
                         </ul>
                     </div>
+                </div>
+                <div class=" row">
+                    <div class="col-xs-12" style="text-align: left;">
+                        <!-- <div id="chart-container">FusionCharts XT will load here!</div> -->
+
+
+                        </div>
                 </div>
             </div>
             <div style="height: 40px"></div>

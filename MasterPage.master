@@ -69,14 +69,11 @@
                 <br />
                 <br />
             </div>
-            <div class="col-lg-8 col-md-4 col-sm-8 col-xs-12" style="background-color: #f2f2f2;">
+            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-12" style="background-color: #f2f2f2;">
 
                 <asp:ContentPlaceHolder ID="Content1" runat="server"></asp:ContentPlaceHolder>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12" style="background-color: #f2f2f2;">
-                <br />
-                <br />
-            </div>
+            
         </div>
         <div class="row">
             <div class="panel-footer" style="background-color: #333333">
@@ -87,8 +84,11 @@
                     <br />
                     <br />
                 </div>
-                <div style="width: auto; margin-left: auto; margin-right: auto; text-align: right;">
-                    <a href="..\contact-me.aspx" style=" font-size:x-large; color:#ffffff;">Contact Me</a>
+                <div style="width: auto; margin-left: auto; margin-right: auto;">
+                    <p style=" font-size:small; color:#ffffff; float:left">Last Update on 10/3/2016</p>
+                    <a href="..\contact-me.aspx" style=" font-size:x-large; color:#ffffff; float:right">Contact Me</a>
+                    <br />
+                    <br />
                 </div>
             </div>
         </div>
