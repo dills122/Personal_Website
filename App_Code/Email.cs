@@ -17,6 +17,20 @@ public class Email
     }
 
     /// <summary>
+    /// Logs into the Mail server
+    /// </summary>
+    /// <returns>returns the smtpclient that allows the user to send emails through the SYSTEM address</returns>
+    protected SmtpClient GetCredentials()
+    {
+        SmtpClient smtpClient = new SmtpClient("mail.dssteele.com", 25);
+
+        smtpClient.Credentials = new System.Net.NetworkCredential("SYSTEM@dssteele.com", "myIDPassword");
+        smtpClient.UseDefaultCredentials = true;
+        smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+        smtpClient.EnableSsl = true;
+        return smtpClient;
+    }
+    /// <summary>
     /// Finish adding the actual email information
     /// </summary>
     /// <param name="Subject"></param>
@@ -26,13 +40,17 @@ public class Email
     {
         try
         {
+            SmtpClient smtp = GetCredentials();
+            //Creates the message object
             MailMessage mailMessage = new MailMessage();
+            //Sets the To and From info
             mailMessage.To.Add("dylansteele57@gmail.com");
             mailMessage.From = new MailAddress("SYSTEM@dssteele.com");
+            //sets the body and subject of the message
             mailMessage.Subject = Subject;
             mailMessage.Body = body;
-            SmtpClient smtpClient = new SmtpClient("smtp.your-isp.com");
-            smtpClient.Send(mailMessage);
+
+            smtp.Send(mailMessage);
         }
         catch (Exception ex)
         {

@@ -1,0 +1,21 @@
+Work Log:
+
+NEEDS WORK:
+
+DESCRIPTION:
+- Finish VB.NET page (need to get the files from work)
+- Take more screen shots of some of the new items
+- Finish Email functions
+- Finish Contact me page
+- Add more information to the about me page
+- Continue to work with FusionGraphs
+- Add java code, and get jar file to work
+- 
+
+COMPLETED:
+
+DATE:			DESCRIPTION:
+
+
+
+
