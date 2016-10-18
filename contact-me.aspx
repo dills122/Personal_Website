@@ -2,6 +2,7 @@
 
 <asp:Content ContentPlaceHolderID="Content1" runat="server">
     <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <style>
         table {
             border-collapse: separate; 
@@ -30,8 +31,11 @@
         </table>
         <br />
         <br />
-        <div style="text-align:center">
+        <div style="text-align:center;  margin: auto;">
             <asp:Button CssClass="nav-pills" runat="server" Text="Submit" OnClick="Unnamed_Click" />
+            <br />
+            <br />
+            <div class="g-recaptcha" data-sitekey="6LfOYgkUAAAAAJj3V8wdTtRYX50V2WnsUNJKxWVS" style="width: 20%; display:block; margin:auto"></div>
         </div>
         <br />
         <br />
