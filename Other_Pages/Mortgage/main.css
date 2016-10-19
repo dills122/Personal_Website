@@ -1,0 +1,38 @@
+.table {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 50%;
+
+}
+.row {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+}
+
+
+.mortTable {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+}
+
+.mortTable td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.mortTable tr:nth-child(even) {
+    background-color: #dddddd;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    
+}
+
+

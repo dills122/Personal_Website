@@ -696,18 +696,17 @@
         <div style="text-align: center">
             <h2>Validate Answers Function</h2>
             <p style="font-size: medium; text-align: center">
-                
             </p>
-        <div class="row">
-            <div class="col-xs-6 col-lg-6 col-md-6" style="text-align: left; width: 50%">
-                <div>
-                    <h3>Before Rewrite</h3>
-                    <br />
-                    <h4>Description: </h4>
-                    <p style="margin-right: 2cm; font-size: medium">
-                    </p>
-                </div>
-                <pre class="pre-scrollable, vbnet" style="max-height: 800px"><code>
+            <div class="row">
+                <div class="col-xs-6 col-lg-6 col-md-6" style="text-align: left; width: 50%">
+                    <div>
+                        <h3>Before Rewrite</h3>
+                        <br />
+                        <h4>Description: </h4>
+                        <p style="margin-right: 2cm; font-size: medium">
+                        </p>
+                    </div>
+                    <pre class="pre-scrollable, vbnet" style="max-height: 800px"><code>
 'Method to check if report data violates any validation rules; called by Page_Load, btnSubmit_Click, and btnCompleteSection_Click
     Function ValidateAnswers(ByVal SectionID As Integer) As Boolean
         'This type of validation only needs to be performed on matrix sections
@@ -1295,15 +1294,15 @@
                     </code></pre>
                 </div>
 
-            <div class="col-xs-6 col-lg-6 col-md-6" style="text-align: left; width: 50%">
-                <div>
-                    <h3>After Rewrite</h3>
-                    <br />
-                    <h4>Description: </h4>
-                    <p style="margin-right: 2cm; font-size: medium">
-                    </p>
-                </div>
-                <pre class="pre-scrollable, vbnet" style="max-height: 800px"><code>
+                <div class="col-xs-6 col-lg-6 col-md-6" style="text-align: left; width: 50%">
+                    <div>
+                        <h3>After Rewrite</h3>
+                        <br />
+                        <h4>Description: </h4>
+                        <p style="margin-right: 2cm; font-size: medium">
+                        </p>
+                    </div>
+                    <pre class="pre-scrollable, vbnet" style="max-height: 800px"><code>
 ''' <summary>
     ''' Validates The Entire Section using the Validation Rules in the DataBase
     ''' Currently works with Heading and Advanced Rules
@@ -1861,7 +1860,7 @@
     End Sub
                     </code></pre>
                 </div>
+            </div>
         </div>
     </div>
-
 </asp:Content>
