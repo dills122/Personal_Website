@@ -16,8 +16,8 @@
             <div class=" container-fluid">
                 <ul class="nav navbar-nav">
                     <li><a href="javascript:void(0)" onclick="document.getElementById('num-of-paths').scrollIntoView(true);">Number of Paths</a></li>
-                    <li><a href="javascript:void(0)"  onclick="document.getElementById('post-fix').scrollIntoView(true);">Post Fix Expressions</a></li>
-                    <li><a href="javascript:void(0)"  onclick="document.getElementById('BST').scrollIntoView(true);" >Binary Search Tree</a></li>
+                    <li><a href="javascript:void(0)" onclick="document.getElementById('post-fix').scrollIntoView(true);">Post Fix Expressions</a></li>
+                    <li><a href="javascript:void(0)" onclick="document.getElementById('BST').scrollIntoView(true);">Binary Search Tree</a></li>
                 </ul>
             </div>
         </div>
@@ -563,6 +563,9 @@ private:
         </div>
 
     </div>
+    <br />
+    <br />
+    <br />
     <br />
     <br />
 </asp:Content>

@@ -227,7 +227,7 @@ echo "{\"label\": \"Principle Paid \", \"value\":\"" . $YearlyPrinciple . "\"},"
 
 <head>
     <title>Amortization Breakdown</title>
-    <link rel="stylesheet" type="text/css" href="main.css"> <script src="valid.js"></script></head>
+    <link rel="stylesheet" type="text/css" href="main.css"/> <script src="valid.js"></script></head>
 
 <body>
 <br/>
