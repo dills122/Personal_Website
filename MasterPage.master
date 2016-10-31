@@ -44,9 +44,10 @@
 </head>
 
 <body>
-    <div class="row row-bottom-margin">
-        <div class=" jumbotron" style="text-align: center; background-color: #333333; border-radius: 0px;" id="header">
-            <h1 style="color: #ffffff">Dylan Steele Portfolio</h1>
+    <div class="row">
+        <div class=" jumbotron" style="text-align:left; background-color: #333333; border-radius: 0px;" id="header">
+            <h1 style="color: #ffffff; margin-left:4cm">Dylan Steele Portfolio</h1>
+            <br />
         </div>
     </div>
     <div class="container-fluid"  id="container">
