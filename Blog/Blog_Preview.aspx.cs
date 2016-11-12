@@ -9,11 +9,20 @@ public partial class Blog_Blog_Preview : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)   
     {
-        string Test = Session["PageContents"].ToString();
+        string PageContents = Session["PageContents"].ToString();
 
-        if (Session["Pass"].ToString() == "Password")
-        {
-            Previewpnl.Controls.Add(new LiteralControl(Session["PageContents"].ToString()));
-        }
+        Previewpnl.Controls.Add(new LiteralControl(PageContents));
+
+
+        //if (PreviousPage != null)
+        //{
+        //    TextBox SourceTextBox =
+        //        (TextBox)PreviousPage.FindControl("Bodytb");
+        //    if (SourceTextBox != null)
+        //    {
+        //        Previewpnl.Controls.Add(new LiteralControl(SourceTextBox.Text));
+        //    }
+        //}
+
     }
 }

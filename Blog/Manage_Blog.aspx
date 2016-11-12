@@ -4,17 +4,11 @@
     <form id="form1" runat="server">
         <script type="text/javascript">
             function OpenPreview() {
-                SetSessionPreview();
                 window.open("Blog_Preview.aspx", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
             }
-            function SetSessionPreview() {
-                var txt = document.getElementById('<%=Bodytb.ClientID%>');
-                var value = txt.value;
-                '<%Session["PageContents"] = "' + value + '"; %>';
-                '<%Session["Pass"] = " + Password + "; %>';
-
-            }
+            
         </script>
+        
         <asp:Panel ID="Lockpnl" runat="server" HorizontalAlign="Center">
             <br />
             <br />
@@ -49,6 +43,8 @@
                 <br />
                 <asp:Button Text="Submit" runat="server" OnClick="Unnamed_Click" ID="PostNewbtn" />&nbsp;&nbsp;
                 <asp:Button Text="Preview" runat="server" OnClientClick="OpenPreview();" OnClick="Unnamed_Click1" />
+                <h4>Preview does NOT currently work</h4>
+                <h4>Write Blog posts in an editor to check</h4>
 
             </asp:Panel>
             <br />

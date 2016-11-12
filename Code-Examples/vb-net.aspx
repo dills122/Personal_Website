@@ -5,8 +5,22 @@
     <link rel="stylesheet" href="../css/foundation.css">
     <script src="../js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
+    <div class="container">
+        <div class="navbar navbar-default" id="mainNavBar">
+            <div class=" container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="javascript:void(0)" onclick="document.getElementById('auto-complete').scrollIntoView(true);">Auto Complete</a></li>
+                    <li><a href="javascript:void(0)" onclick="document.getElementById('validation').scrollIntoView(true);">Validate Answers</a></li>
+                    <li><a href="javascript:void(0)" onclick="document.getElementById('compliance-values').scrollIntoView(true);">Compliance Values</a></li>
+                    <li><a href="javascript:void(0)" onclick="document.getElementById('mailing-labels').scrollIntoView(true);">Mailing Labels</a></li>
+                    <li><a href="javascript:void(0)" onclick="document.getElementById('overview-rules').scrollIntoView(true);">Overview Rules</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid">
-        <div style="text-align: center">
+        <div style="text-align: center" id="auto-complete">
             <h2>Auto Complete Function</h2>
             <p style="font-size: medium; text-align: center">
                 This function is used on the COPOS websystem that I help to develop and maintain at my internship currently.
@@ -693,9 +707,12 @@
         <br />
         <br />
         <br />
-        <div style="text-align: center">
+        <div style="text-align: center" id="validation">
             <h2>Validate Answers Function</h2>
             <p style="font-size: medium; text-align: center">
+                This function is responsible for checking cells to validate the answer on the report. It uses predefined rules for specfic cells.
+                This function will highlight all of the incorrect rules within the current report page, also it creates a list at the bottom of the
+                page to consolidate all of the current report errors on the page.
             </p>
             <div class="row">
                 <div class="col-xs-6 col-lg-6 col-md-6" style="text-align: left; width: 50%">
@@ -704,6 +721,9 @@
                         <br />
                         <h4>Description: </h4>
                         <p style="margin-right: 2cm; font-size: medium">
+                            This is a very bloated, many nested loops, function that causes the page to load slowly.
+                            Also, it checks the page looping through every control on the page to find the cells corresponding 
+                            to the validation rules.
                         </p>
                     </div>
                     <pre class="pre-scrollable, vbnet" style="max-height: 800px"><code>
@@ -1300,6 +1320,9 @@
                         <br />
                         <h4>Description: </h4>
                         <p style="margin-right: 2cm; font-size: medium">
+                            Changed method of checking cells to using the database, rather than 
+                            looping through each control on a report. It eliminates the repetitiveness 
+                            of completing its task. Also, the code it more readable with more comments.
                         </p>
                     </div>
                     <pre class="pre-scrollable, vbnet" style="max-height: 800px"><code>
@@ -1861,6 +1884,495 @@
                     </code></pre>
                 </div>
             </div>
+
+
         </div>
+        <br />
+        <br />
+        <div class="row">
+            <div style="text-align:center" id="compliance-values">
+                <h2>Calculates the compliance value of a cell on a report</h2>
+                <p style="font-size: medium; text-align: center">
+                    This function is used to calculate the compliance value of a integer based answer cell on a report.
+                    It returns an integer corresponding to its value. 
+                    </p>
+            </div>
+            <br />
+            <pre class="pre-scrollable, vbnet" style="max-height: 800px; width:80%; margin:auto"><code>
+''' <summary>
+    ''' A function that calculates the level of compliance a speicifc agency is in my checking its values submitted to the report
+    ''' met +1, not met -1, not saved -2
+    ''' agencies with not saved will be ranked lower than agencies with data not met
+    ''' </summary>
+    ''' <param name="AgencyID"></param>
+    ''' <param name="ReportingPeriod"></param>
+    ''' <returns>Higher the value the more in compliance, lower the less in compliance</returns>
+    ''' <remarks>Created by Dylan Steele
+    ''' 7/11/2016</remarks> 
+    Public Shared Function CalcComplianceValue(ByVal AgencyID As Integer, ByVal ReportingPeriod As Integer) As Integer
+        Dim compliance As Integer = 0
+        Dim NumOfQuestions As Integer = 0
+        Dim NumOfAnswers As Integer = 0
+
+        Using conn As New SqlConnection(ConfigurationManager.ConnectionStrings("FACS").ToString)
+            Dim sql As String = ""
+
+            'calculates the number of questions in the report
+            sql = "select COUNT(*) FROM PART as P inner join AGENCY as A on A.AgencyID=@AgencyID inner join SECTION as S on S.PartID=P.PartID inner join HEADING as H on H.SectionID=S.SectionID inner join QUESTION as Q on H.SectionID=Q.SectionID where P.ReportID=@ReportID ANd S.SectionType=4 AND H.QuestionType=6 and H.AnswerType=5 and Q.PrivateCAA=1 and Q.NoApproval=0 "
+            conn.Open()
+            Dim cmd As New SqlCommand(sql, conn)
+            cmd.Parameters.Add(New SqlParameter("@AgencyID", AgencyID))
+            cmd.Parameters.Add(New SqlParameter("@ReportID", ReportingPeriod))
+            NumOfQuestions = Convert.ToInt16(cmd.ExecuteScalar())
+
+            'gathers the answers from the DB and the values on whether they met or did not meet the standard
+            sql = "select Ans.TypeVarChar FROM PART as P inner join AGENCY as A on A.AgencyID=@AgencyID inner join SECTION as S on S.PartID=P.PartID inner join HEADING as H on H.SectionID=S.SectionID inner join QUESTION as Q on H.SectionID=Q.SectionID inner join ANSWER as Ans on Ans.HeadingID=H.HeadingID AND Ans.QuestionID=Q.QuestionID AND Ans.ReportID=@ReportID AND Ans.AgencyID=@AgencyID where P.ReportID =@ReportID And S.SectionType = 4 And H.QuestionType = 6 And H.AnswerType = 5 and Q.PrivateCAA=1 and Q.NoApproval=0 "
+            Dim cmd2 As New SqlCommand(sql, conn)
+            cmd2.Parameters.Add(New SqlParameter("@AgencyID", AgencyID))
+            cmd2.Parameters.Add(New SqlParameter("@ReportID", ReportingPeriod))
+            Dim dr As SqlDataReader = cmd2.ExecuteReader
+
+
+            'calculates the value of compliance 
+            While dr.Read()
+                NumOfAnswers = NumOfAnswers + 1
+                If dr("TypeVarChar") = "1" Then
+                    compliance = compliance + 1
+
+                ElseIf dr("TypeVarChar") = "0" Then
+                    compliance = compliance - 1
+                End If
+            End While
+            dr.Close()
+            'Makes sure that an agency with no data saved is the lowest returned compared to agencies with data met or not met
+            If NumOfAnswers = 0 Then
+                compliance = -1000
+            Else
+                compliance = compliance + ((-2) * (NumOfQuestions - NumOfAnswers))
+
+            End If
+            Global_Functions.CloseDB(conn)
+        End Using
+
+        Return compliance
+    End Function
+    ''' <summary>
+    ''' Calculates the compliancy value for a specific section for an agency
+    ''' </summary>
+    ''' <param name="AgencyID"></param>
+    ''' <param name="ReportingPeriod"></param>
+    ''' <param name="SectionID"></param>
+    ''' <returns></returns>
+    ''' <remarks>Created by Dylan Steele
+    ''' 7/13/2016</remarks>
+    Public Shared Function CalcComplianceValue(ByVal AgencyID As Integer, ByVal ReportingPeriod As Integer, ByVal SectionID As Integer) As Double
+        Dim CompValue As Double = 0
+        Dim SubCatNumber As Integer = 0
+        Dim NumOfQuestions As Integer = 0
+        Dim NumOfAnswers As Integer = 0
+
+
+
+        Using conn As New SqlConnection(ConfigurationManager.ConnectionStrings("FACS").ToString)
+            Dim sql As String = ""
+
+            conn.Open()
+
+            'calculate the range
+            sql = "Select SectionID FROM SECTION AS S INNER JOIN PART AS P ON P.PartID=S.PartID Where SectionType=4 AND ReportID=@ReportID ORDER BY LinkOrder, SOrder"
+            Dim rangecmd As New SqlCommand(sql, conn)
+            rangecmd.Parameters.Add(New SqlParameter("@ReportID", ReportingPeriod))
+            Dim RangeDA As New SqlDataAdapter(rangecmd), dsRange As New DataSet
+            RangeDA.Fill(dsRange, "SectionID")
+
+            Dim range As Integer = 0
+            Dim temp As Integer = 0
+
+            For Each RangeDR As DataRow In dsRange.Tables("SectionID").Rows
+                sql = " Select COUNT(*) FROM SECTION AS S INNER JOIN PART AS P ON P.PartID=S.PartID inner join QUESTION as Q on Q.SectionID=S.SectionID Where SectionType=4 AND ReportID=@ReportID AND PrivateCAA=1 AND NoApproval=0 AND S.SectionID=@SectionID"
+                Dim cmdRangeCount As New SqlCommand(sql, conn)
+                cmdRangeCount.Parameters.Add(New SqlParameter("@ReportID", ReportingPeriod))
+                cmdRangeCount.Parameters.Add(New SqlParameter("@SectionID", RangeDR("SectionID")))
+                temp = Convert.ToInt16(cmdRangeCount.ExecuteScalar())
+
+                If temp > range Then
+                    range = temp
+                End If
+            Next
+
+            range = range - (range * -2)
+
+
+            'calculates the number of questions in the report
+            sql = "Select COUNT(*) FROM SECTION AS S INNER JOIN PART AS P ON P.PartID=S.PartID inner join QUESTION as Q on Q.SectionID=S.SectionID Where SectionType=4 AND ReportID=@ReportID AND PrivateCAA=1 AND NoApproval=0 AND S.SectionID=@SectionID"
+
+            Dim cmd As New SqlCommand(sql, conn)
+            cmd.Parameters.Add(New SqlParameter("@ReportID", ReportingPeriod))
+            cmd.Parameters.Add(New SqlParameter("@SectionID", SectionID))
+            NumOfQuestions = Convert.ToInt16(cmd.ExecuteScalar())
+
+            sql = "select A.TypeVarChar from HEADING as H inner join QUESTION as Q on Q.SectionID=@SectionID inner join ANSWER as A on A.AgencyID=@AgencyID AND A.HeadingID=H.HeadingID AND A.QuestionID=Q.QuestionID where H.SectionID=@SectionID and ReportID=@ReportID ANd H.AnswerType=5 AND Q.PrivateCAA=1 "
+            Dim cmd2 As New SqlCommand(sql, conn)
+            cmd2.Parameters.Add(New SqlParameter("@AgencyID", AgencyID))
+            cmd2.Parameters.Add(New SqlParameter("@ReportID", ReportingPeriod))
+            cmd2.Parameters.Add(New SqlParameter("@SectionID", SectionID))
+            Dim dr As SqlDataReader = cmd2.ExecuteReader
+
+            While dr.Read()
+                NumOfAnswers = NumOfAnswers + 1
+                If dr("TypeVarChar") = "1" Then
+                    CompValue = CompValue + 1
+
+                ElseIf dr("TypeVarChar") = "0" Then
+                    CompValue = CompValue - 1
+                End If
+            End While
+            dr.Close()
+            'Makes sure that an agency with no data saved is the lowest returned compared to agencies with data met or not met
+            If NumOfAnswers = 0 Then
+                CompValue = -2 * NumOfQuestions
+            Else
+                CompValue = CompValue + ((-2) * (NumOfQuestions - NumOfAnswers))
+
+                CompValue = CompValue / range
+
+            End If
+            Global_Functions.CloseDB(conn)
+
+        End Using
+
+        Return CompValue
+    End Function
+    ''' <summary>
+    ''' calculates the compliancy value of a sub column's cell
+    ''' returns 1 for met, -1 for not met, and -2 for unsaved
+    ''' </summary>
+    ''' <param name="AgencyID"></param>
+    ''' <param name="ReportingPeriod"></param>
+    ''' <param name="QuestionID"></param>
+    ''' <returns>compliancy value corresponding to a single answer in a sub column</returns>
+    ''' <remarks>Created by Dylan Steele
+    ''' 7/18/2016</remarks>
+    Public Shared Function CalcSubCatCompliancyValue(ByVal AgencyID As Integer, ByVal ReportingPeriod As Integer, ByVal QuestionID As Integer) As Integer
+        Dim met As Integer
+        Using conn As New SqlConnection(ConfigurationManager.ConnectionStrings("FACS").ToString)
+            Dim sql As String = ""
+            conn.Open()
+            sql = "select A.TypeVarChar from HEADING as H inner join QUESTION as Q on Q.QuestionID=@QuestionID inner join ANSWER as A on A.AgencyID=@AgencyID AND A.HeadingID=H.HeadingID AND A.QuestionID=Q.QuestionID where ReportID=@ReportID ANd H.AnswerType=5 AND Q.PrivateCAA=1 "
+            Dim cmd As New SqlCommand(sql, conn)
+            cmd.Parameters.Add(New SqlParameter("@QuestionID", QuestionID))
+            cmd.Parameters.Add(New SqlParameter("@ReportID", ReportingPeriod))
+            cmd.Parameters.Add(New SqlParameter("@AgencyID", AgencyID))
+            Dim dr As SqlDataReader = cmd.ExecuteReader()
+            If dr.Read() Then
+                If dr("TypeVarChar") = "1" Then
+                    met = 1
+                Else
+                    met = -1
+                End If
+            Else
+                met = -2
+            End If
+            Global_Functions.CloseDB(conn)
+        End Using
+        Return met
+    End Function
+    ''' <summary>
+    ''' Function That calculates the difference between two numbers
+    ''' </summary>
+    ''' <param name="ThisValue"></param>
+    ''' <param name="BaseLineValue">Older Report Answer</param>
+    ''' <returns>Returns the Variance or -5000000 on Error</returns>
+    ''' <remarks>Created By Dylan Steele
+    ''' 7/21/2016</remarks>
+    Public Shared Function CalculateVarianceYTY(ByVal ThisValue As Double, ByVal BaseLineValue As Double) As Integer
+        Dim Variance As Integer = 0
+        Dim Mean As Double = 0
+
+        Dim diffrence As Long = ThisValue - BaseLineValue
+
+        If BaseLineValue <> 0 And ThisValue <> 0 Then
+            Variance = Convert.ToInt32(((diffrence / BaseLineValue) * 100))
+        Else
+            'sets the error value of variance high so it won't overlap with other values from this function
+            Variance = -5000000
+        End If
+        Return Variance
+    End Function
+
+                </code></pre>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div style="text-align:center" id="mailing-labels">
+                <h2>Creates mailing labels </h2>
+                <p style="font-size: medium; text-align: center">
+                    This function creates mailing labels with a Microsoft Word template for a list of board of directors.
+                    It will email the file to the user. 
+                    </p>
+            </div>
+            <br />
+            <pre class="pre-scrollable, vbnet" style="max-height: 800px; width:80%; margin:auto"><code>
+''' <summary>
+    ''' Creates a Word Document of Mailing Labels and Emails it to the User
+    ''' </summary>
+    ''' <param name="AgencyID"></param>
+    ''' <returns>Returns True if Successful, False otherwise</returns>
+    ''' <remarks>Created by Dylan Steele 11/9/2016</remarks>
+    Public Shared Function CreateMailingLabels(ByVal AgencyID As Integer) As Boolean
+        'Location of the Template that is used to create the mailing labels
+        Dim TemplateLocation As String = ConfigurationManager.AppSettings("FileRoot") & "documents\Templates"
+        Dim DocumentName As String = ""
+
+        Using conn As New SqlConnection(ConfigurationManager.ConnectionStrings("FACS").ToString)
+            Dim sql As String = ""
+            conn.Open()
+            sql = "select (BM.FName + ' ' + BM.LName) as Name, BM.Address, BM.Address2, BM.City, BM.State, BM.Zip FROM BOARD_MEMBER as BM where BM.AgencyID=@AgencyID"
+            Dim cmd As New SqlCommand(sql, conn)
+            cmd.Parameters.Add(New SqlParameter("@AgencyID", AgencyID))
+            Dim dr As SqlDataReader = cmd.ExecuteReader()
+
+            If dr.Read() Then
+
+                'Loads the Template
+                Dim doc = DocX.Load(TemplateLocation & "\LabelsTemplate.docx")
+                Dim Counter As Integer = 1
+
+                'Loops through the DB results
+                While dr.Read()
+                    'Checks to make sure their is an address
+                    If (IsDBNull(dr("Address")) = False) Then
+                        Dim LabelString As String = dr("Name") & Environment.NewLine & dr("Address") & Environment.NewLine
+                        If IsDBNull(dr("Address2")) = False Then
+                            LabelString = LabelString & dr("Address2") & Environment.NewLine
+                        End If
+                        LabelString = LabelString & dr("City") & ", " & dr("State") & " " & dr("Zip")
+
+                        'Inserts the Information into the Document
+                        If Counter <= 30 Then
+                            doc.InsertAtBookmark(LabelString, "Cell" & Counter)
+                        End If
+
+                        Counter = Counter + 1
+                    End If
+                End While
+                dr.Close()
+                'Saves the Document 
+                DocumentName = TemplateLocation & "\Labels" & Date.Now.Day & "_" & Date.Now.Month & "_" & Date.Now.Hour & "_" & Date.Now.Minute & ".docx"
+                doc.SaveAs(DocumentName)
+
+                'Sends the file through email
+                Dim body As String = "Attached is the requested Mailing Labels."
+                MailHelper.SendMailMessage(HttpContext.Current.Session("Email"), "", True, "IT@jccap.org", "Mailing Labels", body, DocumentName, 1, Nothing)
+
+                Return True
+            Else
+                Return False
+            End If
+            Global_Functions.CloseDB(conn)
+        End Using
+    End Function
+    ''' <summary>
+    ''' Creates a Word Document of Mailing Labels and Emails it to the User
+    ''' </summary>
+    ''' <param name="AgencyID"></param>
+    ''' <param name="Email">Email of the Recipient</param>
+    ''' <returns>Returns True if Successful, False otherwise</returns>
+    ''' <remarks>Created by Dylan Steele on 11/9/2016</remarks>
+    Public Shared Function CreateMailingLabels(ByVal AgencyID As Integer, ByVal Email As String) As Boolean
+        'Location of the Template that is used to create the mailing labels
+        Dim TemplateLocation As String = ConfigurationManager.AppSettings("FileRoot") & "documents\Templates"
+        Dim DocumentName As String = ""
+
+        Using conn As New SqlConnection(ConfigurationManager.ConnectionStrings("FACS").ToString)
+            Dim sql As String = ""
+            conn.Open()
+            sql = "select (BM.FName + ' ' + BM.LName) as Name, BM.Address, BM.Address2, BM.City, BM.State, BM.Zip FROM BOARD_MEMBER as BM where BM.AgencyID=@AgencyID"
+            Dim cmd As New SqlCommand(sql, conn)
+            cmd.Parameters.Add(New SqlParameter("@AgencyID", AgencyID))
+            Dim dr As SqlDataReader = cmd.ExecuteReader()
+
+            If dr.Read() Then
+
+                'Loads the Template
+                Dim doc = DocX.Load(TemplateLocation & "\LabelsTemplate.docx")
+                Dim Counter As Integer = 1
+
+                'Loops through the DB results
+                While dr.Read()
+                    'Checks to make sure their is an address
+                    If (IsDBNull(dr("Address")) = False) Then
+                        Dim LabelString As String = dr("Name") & Environment.NewLine & dr("Address") & Environment.NewLine
+                        If IsDBNull(dr("Address2")) = False Then
+                            LabelString = LabelString & dr("Address2") & Environment.NewLine
+                        End If
+                        LabelString = LabelString & dr("City") & ", " & dr("State") & " " & dr("Zip")
+
+                        'Inserts the Information into the Document
+                        If Counter <= 30 Then
+                            doc.InsertAtBookmark(LabelString, "Cell" & Counter)
+                        End If
+
+                        Counter = Counter + 1
+                    End If
+                End While
+                dr.Close()
+                'Saves the Document 
+                DocumentName = TemplateLocation & "\Labels" & Date.Now.Day & "_" & Date.Now.Month & "_" & Date.Now.Hour & "_" & Date.Now.Minute & ".docx"
+                doc.SaveAs(DocumentName)
+
+                'Sends the file through email
+                Dim body As String = "Attached is the requested Mailing Labels."
+                MailHelper.SendMailMessage(Email, "", True, "IT@jccap.org", "Mailing Labels", body, DocumentName, 1, Nothing)
+
+                Return True
+            Else
+                Return False
+            End If
+            Global_Functions.CloseDB(conn)
+        End Using
+    End Function
+
+                </code></pre>
+            </div>
+        <br />
+        <br />
+        <div class="row">
+            <div style="text-align:center" id="overview-rules">
+                <h2>Translates overview rules to any report </h2>
+                <p style="font-size: medium; text-align: center">
+                    Allows overview rules created in a different report be able to be used in another report.
+                    It just translates the rule at use, it does not create a new rules for the report.
+                    </p>
+            </div>
+            <br />
+            <pre class="pre-scrollable, vbnet" style="max-height: 800px; width:80%; margin:auto"><code>
+''' <summary>
+    ''' Allows Rules to be used with any ReportID
+    ''' </summary>
+    ''' <param name="RuleID"></param>
+    ''' <param name="NewReportID"></param>
+    ''' <param name="AgencyID">Either AgencyID or 0 = all Agencies</param>
+    ''' <returns></returns>
+    ''' <remarks>Created By Dylan Steele
+    ''' 9/22/2016</remarks>
+    Public Shared Function GetRuleByReportYear(ByVal RuleID As Integer, ByVal NewReportID As Integer, ByVal AgencyID As Integer) As Double
+        'Creates a list to hold the values
+        Dim list As New ArrayList
+        Dim OperatorVal As String = ""
+        Using conn As New SqlConnection(ConfigurationManager.ConnectionStrings("FACS").ToString)
+            Dim sql As String = ""
+            conn.Open()
+            sql = "select QuestionID, GI2.HeadingID, OperatorID, P.ReportID FROM OVERVIEW_RULE as OVR inner join GROUP_ITEMS2 as GI2 on GI2.GroupID=OVR.GroupID inner join ARITHMETIC_OPERATORS as AO on AO.ArithmeticID=OVR.OperatorID inner join HEADING as H on H.HeadingID=GI2.HeadingID inner join SECTION as S on S.SectionID=H.SectionID inner join PART as P on P.PartID=S.PartID where OVR.RuleID=@RuleID"
+            Dim cmd As New SqlCommand(sql, conn)
+            cmd.Parameters.Add(New SqlParameter("@RuleID", RuleID))
+            Dim RuleRows As New SqlDataAdapter(cmd), ds As New DataSet
+            RuleRows.Fill(ds, "RuleRows")
+
+            Dim NewHeadingID As Integer = 0
+            Dim NewQuestionID As Integer = 0
+            'if Its True the New ReportID is greater than
+            'If its False the new ReportID is less than
+            Dim GreaterOrLess As Boolean
+            Dim RuleReportID As Integer = 0
+
+            For Each row As DataRow In ds.Tables("RuleRows").Rows
+                OperatorVal = row("OperatorID")
+
+                RuleReportID = row("ReportID")
+                If row("ReportID") < NewReportID Then
+                    GreaterOrLess = True
+                ElseIf row("ReportID") > NewReportID Then
+                    GreaterOrLess = False
+                ElseIf row("ReportID") = NewReportID Then
+
+                End If
+                'Determines wether the new rule value is in a newer report or in an older report
+                Dim CurrReportID As Integer = 0
+                If GreaterOrLess = True Then
+                    While RuleReportID <> NewReportID
+                        'Used if the RuleInfo needed is greater than the current one
+                        sql = "select ThisHeadingID, ThisQuestionID, ThisReportID FROM COPOS_YTY_MAP as CYM where CYM.LastHeadingID=@HeadingID and CYM.LastQuestionID=@QuestionID"
+                        cmd = New SqlCommand(sql, conn)
+                        If CurrReportID = 0 Then
+                            cmd.Parameters.Add(New SqlParameter("@HeadingID", row("HeadingID")))
+                            cmd.Parameters.Add(New SqlParameter("@QuestionID", row("QuestionID")))
+                        Else
+                            cmd.Parameters.Add(New SqlParameter("@HeadingID", NewHeadingID))
+                            cmd.Parameters.Add(New SqlParameter("@QuestionID", NewQuestionID))
+                        End If
+                        Dim dr As SqlDataReader = cmd.ExecuteReader()
+                        While dr.Read()
+                            NewHeadingID = dr("ThisHeadingID")
+                            NewQuestionID = dr("ThisQuestionID")
+                            CurrReportID = dr("ThisReportID")
+                        End While
+                        dr.Close()
+                        RuleReportID = RuleReportID + 1
+                    End While
+
+                ElseIf GreaterOrLess = False Then
+                    CurrReportID = 0
+                    While RuleReportID <> NewReportID
+                        'Used if the RuleInfo needed is less than the current one
+                        sql = "select LastHeadingID, LastQuestionID, LastReportID FROM COPOS_YTY_MAP as CYM where CYM.ThisHeadingID=@HeadingID and CYM.ThisQuestionID=@QuestionID"
+                        cmd = New SqlCommand(sql, conn)
+                        If CurrReportID = 0 Then
+                            cmd.Parameters.Add(New SqlParameter("@HeadingID", row("HeadingID")))
+                            cmd.Parameters.Add(New SqlParameter("@QuestionID", row("QuestionID")))
+                        Else
+                            cmd.Parameters.Add(New SqlParameter("@HeadingID", NewHeadingID))
+                            cmd.Parameters.Add(New SqlParameter("@QuestionID", NewQuestionID))
+                        End If
+                        Dim dr As SqlDataReader = cmd.ExecuteReader()
+                        While dr.Read()
+                            NewHeadingID = dr("LastHeadingID")
+                            NewQuestionID = dr("LastQuestionID")
+                            CurrReportID = dr("LastReportID")
+                        End While
+                        dr.Close()
+                        RuleReportID = RuleReportID - 1
+                    End While
+                End If
+
+                If AgencyID = 0 Then
+                    sql = "select A.TypeInt, A.TypeDec FROM ANSWER as A where A.HeadingID=@HeadingID and A.QuestionID=@QuestionID"
+                Else
+                    sql = "select A.TypeInt, A.TypeDec FROM ANSWER as A where A.HeadingID=@HeadingID and A.QuestionID=@QuestionID and A.AgencyID=@AgencyID"
+                End If
+                'Gets the value for the current row in the rule
+                cmd = New SqlCommand(sql, conn)
+                cmd.Parameters.Add(New SqlParameter("@HeadingID", NewHeadingID))
+                cmd.Parameters.Add(New SqlParameter("@QuestionID", NewQuestionID))
+                If AgencyID <> 0 Then
+                    cmd.Parameters.Add(New SqlParameter("@AgencyID", AgencyID))
+                End If
+                Dim dr2 As SqlDataReader = cmd.ExecuteReader()
+                'Adds the value to the list
+                While dr2.Read()
+                    If IsDBNull(dr2("TypeInt")) And IsDBNull(dr2("TypeDec")) Then
+                        'Might cause issues if you make the value zero
+                        'list.Add(0)
+                    ElseIf IsDBNull(dr2("TypeInt")) Then
+                        list.Add(dr2("TypeDec"))
+                    ElseIf IsDBNull(dr2("TypeDec")) Then
+                        list.Add(dr2("TypeInt"))
+                    End If
+                End While
+                dr2.Close()
+            Next
+            Dim computedValue As Double = report_writer.CalcValues(list, OperatorVal)
+
+            Return computedValue
+            Global_Functions.CloseDB(conn)
+        End Using
+    End Function
+                </code></pre>
+            </div>
+
+
+        <br />
+        <br />
     </div>
 </asp:Content>

@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 public partial class Blog_Manage_Blog : System.Web.UI.Page
 {
     Global_Functions glob = new Global_Functions();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (IsPostBack == false)
@@ -18,11 +19,11 @@ public partial class Blog_Manage_Blog : System.Web.UI.Page
         }
         else
         {
-            if (Session["Pass"].ToString() == "True")
-            {
-                Managepnl.Visible = true;
-                Lockpnl.Visible = false;
-            }
+            //if (Session["Pass"].ToString() == "True")
+            //{
+            //    Managepnl.Visible = true;
+            //    Lockpnl.Visible = false;
+            //}
         }
     }
 
@@ -95,6 +96,5 @@ public partial class Blog_Manage_Blog : System.Web.UI.Page
     protected void Unnamed_Click1(object sender, EventArgs e)
     {
         Session["PageContents"] = Bodytb.Text;
-         
     }
 }

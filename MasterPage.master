@@ -58,7 +58,7 @@
                 <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="\main.aspx">Home</a></li>
                     <li class="active"><a href="\about.aspx">About</a></li>
-                    <li class="active"><a href="\contact-me.aspx">Contact Me</a></li>
+                    <!--<li class="active"><a href="\contact-me.aspx">Contact Me</a></li>-->
                     <!-- Place to add all of the page links for specific projects -->
                 </ul>
                 <h3>Code Examples</h3>
@@ -87,7 +87,7 @@
         </div>
         <div class="row">
             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-12" id="footer">
-                <h6 style="color:#ffffff;float:left;">Last Updated 10/21/2016</h6>
+                <h6 style="color:#ffffff;float:left;">Last Updated 11/12/2016</h6>
                 <h4 style="color:#ffffff;">This website was developed and is maintained by Dylan Steele</h4>
                  </div>
         </div>

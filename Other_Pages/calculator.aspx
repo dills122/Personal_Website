@@ -19,7 +19,7 @@
     <br />
     <div style="text-align: center">
         <h4>The calculator can be downloaded here: </h4>
-        <a href="../Documents/COSC-Calculator.zip">Calculator Ver 1.0</a>
+        <a href="../Documents/Calculator.zip">Calculator Ver 1.0</a>
         <br />
         <br />
 
