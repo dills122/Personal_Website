@@ -1,0 +1,48 @@
+﻿body {
+}
+
+#Left-Side {
+    margin:auto;
+}
+
+#Right-Side {
+    
+    
+}
+
+#Content {
+    
+}
+
+#container {
+    margin:auto;
+}
+
+#Ad {
+    height:100px;
+    background-color:grey;
+}
+
+.forgotPass {
+    font-size:small;
+}
+#Login {
+    margin: auto;
+    width: 100%;
+}
+
+#Posts {
+    
+}
+
+#CommentBox {
+    width: 90%;
+    height: 6em;
+}
+
+#CommentArea {
+    width: 80%;
+    margin: auto;
+    border: solid 1px black;
+    margin: 2px;
+}
