@@ -146,12 +146,18 @@ public partial class Forums_post : System.Web.UI.Page
             Panel NewComment = new Panel();
             NewComment.CssClass = "CommentArea";
             NewComment.CssClass = "well";
+     
 
             NewComment.Controls.Add(new LiteralControl("<h3>" + dr["FullName"] + "</h3>"));
             NewComment.Controls.Add(new LiteralControl("<br/>"));
             NewComment.Controls.Add(new LiteralControl("<p>" + dr["ReplyText"] + "</p>"));
+            NewComment.Controls.Add(new LiteralControl("<br/>"));
+            NewComment.Controls.Add(new LiteralControl("<p style=\"float:left; font-size:medium;\">" + "<a id=\"testPostbtn\">Comment</a>" + "</p>"));
             NewComment.Controls.Add(new LiteralControl("<small style=\"float:right\">" + dr["DatePosted"] + "</small>"));
             NewComment.Controls.Add(new LiteralControl("<br/>"));
+            NewComment.Controls.Add(new LiteralControl("</div><div style=\"clear: both; \"></div>"));        
+
+
             Content.Controls.Add(NewComment);
         }
         dr.Close();

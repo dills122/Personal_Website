@@ -26,7 +26,7 @@
             </tr>
             <tr>
                 <td><asp:Literal Text="<b>Enter Body:  " runat="server"></asp:Literal></td>
-                <td><asp:TextBox ID="Bodytb" runat="server" Width="80%" Height="200px"></asp:TextBox></td>
+                <td><asp:TextBox ID="Bodytb" runat="server" Width="80%"  TextMode="MultiLine" Rows="15"></asp:TextBox></td>
             </tr>
         </table>
         <br />

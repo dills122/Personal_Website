@@ -11,7 +11,10 @@ public partial class contact_me : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        Nametb.Text = "";
+        Subjecttb.Text = "";
+        Bodytb.Text = "";
+
     }
 
     protected void Unnamed_Click(object sender, EventArgs e)
@@ -20,6 +23,6 @@ public partial class contact_me : System.Web.UI.Page
         string Subject = Subjecttb.Text;
         string Body = Bodytb.Text;
         string ModBody = Name + "," + Environment.NewLine + Body;
-        email.SendEmail(Subject, Body);
+        email.SendEmail(Subject, ModBody);
     }
 }
