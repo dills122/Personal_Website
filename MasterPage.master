@@ -87,8 +87,11 @@
         </div>
         <div class="row">
             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-12" id="footer">
-                <h6 style="color:#ffffff;float:left;">Last Updated 11/12/2016</h6>
+                
                 <h4 style="color:#ffffff;">This website was developed and is maintained by Dylan Steele</h4>
+                <h6 style="color:#ffffff;float:left;">Last Updated 11/12/2016</h6>
+                <h6 style="color:#ffffff;float:right;">Big Update Coming Dec 23rd, Stay Tuned</h6>
+                <div style="clear: both;"></div>
                  </div>
         </div>
     </div>

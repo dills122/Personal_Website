@@ -54,8 +54,18 @@ public partial class Forums_new_post : System.Web.UI.Page
 
     }
 
+    /// <summary>
+    /// Handles Storing the new post in the database
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     protected void PostUpload_Click(object sender, EventArgs e)
     {
-
+        if( String.IsNullOrEmpty(PostTitle.Text) != true && String.IsNullOrEmpty(ContentBodytb.Text) != true)
+        {
+            SqlConnection conn = glob.Connect();
+            conn.Open();
+            string sql = "";
+        }
     }
 }

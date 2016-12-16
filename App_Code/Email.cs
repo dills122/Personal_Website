@@ -24,7 +24,7 @@ public class Email
     {
         SmtpClient smtpClient = new SmtpClient("mail.dssteele.com", 25);
 
-        smtpClient.Credentials = new System.Net.NetworkCredential("SYSTEM@dssteele.com", "myIDPassword");
+        smtpClient.Credentials = new System.Net.NetworkCredential("SYSTEM@dssteele.com", "Skittles122!");
         smtpClient.UseDefaultCredentials = true;
         smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
         smtpClient.EnableSsl = true;

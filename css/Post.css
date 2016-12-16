@@ -60,6 +60,10 @@
     margin: auto;
     
 }
+#InnerContent {
+    width:80%;
+    margin: auto;
+}
 
 .modalfooter {
     display: none; /* Hidden by default */

@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="new_post.aspx.cs" Inherits="Forums_new_post" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="new_post.aspx.cs" Inherits="Forums_new_post" ValidateRequest="false" %>
+<%@ Register TagPrefix="FTB" Namespace="FreeTextBoxControls" Assembly="FreeTextBox" %>
 
 <!DOCTYPE html>
 
@@ -10,6 +11,7 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/Post.css" rel="stylesheet" />
     <form runat="server" id="form1">
+        
         <div class="container-fluid" id="container">
             <div class="row-fluid">
                 <div class="col-md-2 col-lg-2 col-sm-2 col-xs-12 span-2">
@@ -38,15 +40,15 @@
                 </div>
                 <!--/span-->
                 <asp:Panel class="col-md-8 col-lg-8 col-sm-8 col-xs-12 span-8" ID="Content" runat="server">
-                    <asp:Panel ID="InnerContent" runat="server">
-                        <h2 class="page-header">Create New Post</h2>
+                    <h2 class="page-header">Create New Post</h2>
+                    <asp:Panel ID="InnerContent" runat="server" >
+                        
                         <br />
-                        <asp:Label Text="Enter Post Title" runat="server" CssClass="Labels"></asp:Label>
-                        <br />
+                        <asp:Label Text="<b>Enter Post Title: </b>" runat="server" CssClass="Labels"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:TextBox ID="PostTitle" runat="server" Width="50%" ></asp:TextBox>
                         <br />
                         <br />
-                        <asp:TextBox ID="PostContent" runat="server" Width="80%" Rows="25"></asp:TextBox>
+                        <FTB:FreeTextBox id="ContentBodytb" runat="Server" />
                         <br />
                         <asp:Button ID="PostUpload" runat="server" Text="Post" OnClick="PostUpload_Click" />
                     </asp:Panel>
