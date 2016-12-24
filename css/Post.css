@@ -10,8 +10,8 @@
     
 }
 
-#Content {
-    
+#NewPostContent {
+    text-align:center;
 }
 
 #container {
@@ -61,9 +61,15 @@
     
 }
 #InnerContent {
-    width:80%;
+    width:100%;
     margin: auto;
 }
+
+
+#Previewpnl {
+    text-align:left;
+}
+
 
 .modalfooter {
     display: none; /* Hidden by default */

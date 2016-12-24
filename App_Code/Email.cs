@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Web;
 
@@ -22,12 +23,12 @@ public class Email
     /// <returns>returns the smtpclient that allows the user to send emails through the SYSTEM address</returns>
     protected SmtpClient GetCredentials()
     {
-        SmtpClient smtpClient = new SmtpClient("mail.dssteele.com", 25);
+        SmtpClient smtpClient = new SmtpClient();
+        smtpClient.Host = "mail.dssteele.com";
+        smtpClient.Port = 8889;
 
-        smtpClient.Credentials = new System.Net.NetworkCredential("SYSTEM@dssteele.com", "Skittles122!");
-        smtpClient.UseDefaultCredentials = true;
-        smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-        smtpClient.EnableSsl = true;
+        NetworkCredential Credentials = new NetworkCredential("Get From", "File On Drive");
+        smtpClient.Credentials = Credentials;
         return smtpClient;
     }
     /// <summary>
@@ -60,5 +61,73 @@ public class Email
 
 
         return true;
+    }
+
+    /// <summary>
+    /// Send Email to a user
+    /// </summary>
+    /// <param name="Subject"></param>
+    /// <param name="body"></param>
+    /// <param name="Email"></param>
+    /// <returns></returns>
+    public Boolean SendEmail(string Subject, string body, string Email)
+    {
+        try
+        {
+            SmtpClient smtp = GetCredentials();
+            //Creates the message object
+            MailMessage mailMessage = new MailMessage();
+            //Sets the To and From info
+            mailMessage.To.Add(Email);
+            mailMessage.From = new MailAddress("SYSTEM@dssteele.com");
+            //sets the body and subject of the message
+            mailMessage.Subject = Subject;
+            mailMessage.Body = body;
+
+            smtp.Send(mailMessage);
+        }
+        catch (Exception ex)
+        {
+
+        }
+
+
+
+        return true;
+    }
+
+    public void ForumActivationEmail(string Email)
+    {
+        try
+        {
+            string body = "";
+            //Need to add code for adding users name
+            body = "<p>Dear [USER],</p>";
+            body += "< p > &nbsp;</ p >";
+            body += "< p > you have requested to create an account with dssteele.com forums. If you believe this is incorrect please contact the system administrator at .</ p >";
+            body += "< p > &nbsp;</ p >";
+            body += "< p > If you have created an account please follow the link below to activate your account.</ p >";
+            body += "< p > &nbsp;</ p >";
+            body += "< p >< a href = \"mailto:ISSUE@dssteele.com\" > ISSUE@dssteele.com </ a ></ p >";
+            body += "< p > &nbsp;</ p >";
+            body += "< p > Dylan Steele &#39;s Portfolio</p>";
+            body += "< p > dssteele.com </ p > ";
+
+            SmtpClient smtp = GetCredentials();
+            //Creates the message object
+            MailMessage mailMessage = new MailMessage();
+            //Sets the To and From info
+            mailMessage.To.Add(Email);
+            mailMessage.From = new MailAddress("SYSTEM@dssteele.com");
+            //sets the body and subject of the message
+            mailMessage.Subject = "Activate your account";
+            mailMessage.Body = body;
+
+            smtp.Send(mailMessage);
+        }
+        catch (Exception ex)
+        {
+
+        }
     }
 }

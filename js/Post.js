@@ -28,3 +28,12 @@ function SetCommentID()
     var buttonClicked = document.getElementById("")
 }
 
+
+$('CommentBox').keyup(updateCount);
+$('CommentBox').keydown(updateCount);
+
+function updateCount() {
+    var cs = $(this).val().length;
+    $('#characters').text(cs);
+}
+

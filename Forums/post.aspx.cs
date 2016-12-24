@@ -19,6 +19,7 @@ public partial class Forums_post : System.Web.UI.Page
             FillComments();
             Session["UserID"] = "1";
         }
+
     }
     protected void FillNewestPosts()
     {
@@ -105,6 +106,8 @@ public partial class Forums_post : System.Web.UI.Page
     {
         TextBox CommentTxt = new TextBox();
         CommentTxt.ID = "CommentBox";
+        CommentTxt.TextMode = TextBoxMode.MultiLine;
+        CommentTxt.Rows = 4;
 
         Button PostBtn = new Button();
         PostBtn.Text = "Post";
@@ -170,7 +173,14 @@ public partial class Forums_post : System.Web.UI.Page
 
     protected void Loginbtn_Click(object sender, EventArgs e)
     {
+        if (glob.AuthenticateUser(UserNametxt.Text,Passwordtxt.Text) == true )
+        {
+            LoginPanel();
+        }
+        else
+        {
 
+        }
     }
 
     /// <summary>

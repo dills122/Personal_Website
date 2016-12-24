@@ -63,9 +63,36 @@ public partial class Forums_new_post : System.Web.UI.Page
     {
         if( String.IsNullOrEmpty(PostTitle.Text) != true && String.IsNullOrEmpty(ContentBodytb.Text) != true)
         {
+            //Doesn't Work yet need to add in user login so Sessions Work
             SqlConnection conn = glob.Connect();
             conn.Open();
-            string sql = "";
+            string sql = "insert into FORUM_POST (PostName, PostText, UserID, PostDate) Values (@PostName, @PostText, @UserID, @PostDate)";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.Add(new SqlParameter("@PostName", PostTitle.Text));
+            cmd.Parameters.Add(new SqlParameter("@PostText", ContentBodytb.Text));
+            cmd.Parameters.Add(new SqlParameter("@UserID", Session["UserID"]));
+            cmd.Parameters.Add(new SqlParameter("@PostDate", DateTime.Now));
+            int rows = cmd.ExecuteNonQuery();
+
+        }
+    }
+
+    protected void Previewbtn_Click(object sender, EventArgs e)
+    {
+        if( String.IsNullOrEmpty(ContentBodytb.Text) != true && String.IsNullOrEmpty(PostTitle.Text) != true)
+        {
+
+            Panel HeaderPnl = new Panel();
+            HeaderPnl.CssClass = "page-header";
+            HeaderPnl.Controls.Add(new LiteralControl("<h1>" + PostTitle.Text + "</h1>"));
+            HeaderPnl.Controls.Add(new LiteralControl("<br/>"));
+            HeaderPnl.Controls.Add(new LiteralControl("<small>" + "Test, Post" + "&nbsp;&nbsp;&nbsp;&nbsp;" + DateTime.Now + "</small>"));
+            Previewpnl.Controls.Add(HeaderPnl);
+
+            Previewpnl.Controls.Add(new LiteralControl(ContentBodytb.Text));
+            Previewpnl.Controls.Add(new LiteralControl("<br/>"));
+            Previewpnl.Visible = true;
+            Previewtxt.Visible = true;
         }
     }
 }

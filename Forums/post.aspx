@@ -30,10 +30,13 @@
                            
                             <asp:TextBox ID="Passwordtxt" runat="server" TextMode="Password" Width="100%"></asp:TextBox>
                             <br />
-                            <asp:LinkButton ID="ForgotPasslb" runat="server" Text="Forgot Password?" CssClass="forgotPass" OnClick="ForgotPasslb_Click"></asp:LinkButton>
+                            <a href="user.aspx?type=2">Forgot Password?</a>
                             <br />
                             <br />
                             <asp:Button Text="Logon" runat="server" ID="Loginbtn" OnClick="Loginbtn_Click" />
+                            <br />
+                            <br />
+                            <a href="user.aspx?type=1">New User?</a>
                         </asp:Panel>
                         <br />
                         <asp:Panel class="well" ID="Posts" runat="server">
