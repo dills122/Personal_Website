@@ -18,7 +18,15 @@ public partial class Forums_post : System.Web.UI.Page
             NewCommentArea();
             FillComments();
             Session["UserID"] = "1";
+
+            Button btn = (Button)Content.FindControl("Postbtn");
+            btn.Enabled = false;
+            TextBox txt = (TextBox)Content.FindControl("CommentBox");
+            txt.Enabled = false;
         }
+
+            
+
 
     }
     protected void FillNewestPosts()
@@ -105,6 +113,7 @@ public partial class Forums_post : System.Web.UI.Page
     protected void NewCommentArea()
     {
         TextBox CommentTxt = new TextBox();
+        CommentTxt.ClientIDMode = ClientIDMode.Static;
         CommentTxt.ID = "CommentBox";
         CommentTxt.TextMode = TextBoxMode.MultiLine;
         CommentTxt.Rows = 4;
@@ -112,6 +121,8 @@ public partial class Forums_post : System.Web.UI.Page
         Button PostBtn = new Button();
         PostBtn.Text = "Post";
         PostBtn.Click += new EventHandler(PostClick);
+        PostBtn.ClientIDMode = ClientIDMode.Static;
+        PostBtn.ID = "Postbtn";
         PostBtn.Style.Add("float", "right");
         PostBtn.Style.Add("height", "25px");
 

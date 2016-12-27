@@ -9,7 +9,7 @@ using System.Web;
 /// </summary>
 public class Global_Functions
 {
-    public string conString = "";
+    public string conString = "Data Source=SQL5016.SmarterASP.NET;Initial Catalog=DB_A105F9_WEBSITE;User Id=DB_A105F9_WEBSITE_admin;Password=Skittles122;";
 
 
     public string getConString()
@@ -28,6 +28,7 @@ public class Global_Functions
 
     public bool AuthenticateUser(string UserName, string Password)
     {
+        
         bool Valid = false;
         SqlConnection conn = Connect();
         conn.Open();
@@ -39,7 +40,7 @@ public class Global_Functions
         {
             while (dr.Read())
             {
-                if (Password == dr["Password"].ToString())
+                if (Password == Encryption.Decrypt(dr["Password"].ToString(), Encryption.GetPassPhrase().ToString()))
                 {
                     Valid = true;
                 }
@@ -59,6 +60,8 @@ public class Global_Functions
 
         return Valid;
     }
+
+
 
     public void SetSession()
     {

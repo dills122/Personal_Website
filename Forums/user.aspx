@@ -18,6 +18,9 @@
             font-family:Arial;
             font-size:medium;
         }
+        .alignCenter {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -30,55 +33,59 @@
 
             <div>
                 <span class="alignleft">First Name: </span>
-                <input type="text" id="FName" class="alignright" />
+                <input type="text" id="FName" class="alignright" runat="server" />
 
             </div>
             <div style="clear: both;"></div>
             <br />
             <div>
                 <span class="alignleft">Last Name: </span>
-                <input type="text" id="LName" class="alignright" />
+                <input type="text" id="LName" class="alignright" runat="server" />
 
             </div>
             <div style="clear: both;"></div>
             <br />
             <div>
                 <span class="alignleft">UserID: </span>
-                <input type="text" id="UserID" class="alignright" />
+                <input type="text" id="UserID" class="alignright" runat="server" />
 
             </div>
             <div style="clear: both;"></div>
             <br />
             <div>
                 <span class="alignleft">Password: </span>
-                <input type="password" id="Pass" class="alignright" />
+                <input type="password" id="Pass" class="alignright" runat="server" />
 
             </div>
             <div style="clear: both;"></div>
             <br />
             <div>
                 <span class="alignleft">Confirm Password: </span>
-                <input type="password" id="ConfirmPass" class="alignright" />
+                <input type="password" id="ConfirmPass" class="alignright" runat="server" />
 
             </div>
             <div style="clear: both;"></div>
             <br />
             <div>
                 <span class="alignleft">Email: </span>
-                <input type="password" id="Email" class="alignright" />
+                <input type="password" id="Email" class="alignright" runat="server" />
 
             </div>
             <div style="clear: both;"></div>
             <br />
             <div>
                 <span class="alignleft">Confirm Email: </span>
-                <input type="password" id="ConfirmEmail" class="alignright" />
+                <input type="password" id="ConfirmEmail" class="alignright" runat="server" />
 
             </div>
             <div style="clear: both;"></div>
             <br />
             <br />
+            <div align="center">
+            <asp:Button ID="SubNewUserbtn" Text="Submit" runat="server" OnClick="SubNewUserbtn_Click" CssClass="alignCenter" />
+                </div>
         </div>
+            
             </div>
         <div id="ForgotPass">
 

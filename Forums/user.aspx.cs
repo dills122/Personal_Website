@@ -11,4 +11,14 @@ public partial class Forums_user : System.Web.UI.Page
     {
 
     }
+
+    protected void SubNewUserbtn_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected bool CheckInput()
+    {
+        
+    }
 }
