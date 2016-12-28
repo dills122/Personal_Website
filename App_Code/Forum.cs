@@ -62,4 +62,48 @@ public class Forum
         }
     }
 
+    public void CreateUser(string FName, string LName, string UserName, string Pass, string Email)
+    {
+        string EncryptPass = Encryption.Encrypt(Pass, Encryption.GetPassPhrase());
+
+        using (SqlConnection conn = glob.Connect())
+        {
+            conn.Open();
+            string sql = "insert into FORUM_USER (FName,LName,UserName, Email, Password,Created) Values (@FName, @LName, @UserName, @Email, @Pass, @Created)";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.Add(new SqlParameter("@FName", FName));
+            cmd.Parameters.Add(new SqlParameter("@LName", LName));
+            cmd.Parameters.Add(new SqlParameter("@UserName", UserName));
+            cmd.Parameters.Add(new SqlParameter("@Pass", EncryptPass));
+            cmd.Parameters.Add(new SqlParameter("@Email", Email));
+            cmd.Parameters.Add(new SqlParameter("@Created", DateTime.Now.ToString()));
+            cmd.ExecuteNonQuery();
+        }
+    }
+
+    public bool ActivateUser(string ActivateKey)
+    {
+        bool returnval = false;
+        using (SqlConnection conn = glob.Connect())
+        {
+            conn.Open();
+            string sql = "select UserID FROM FORUM_ACTIVATE where ValidationKey=@ValidationKey";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.Add(new SqlParameter("@Activate", ActivateKey));
+            SqlDataReader dr = cmd.ExecuteReader();
+            
+            while(dr.Read())
+            {
+                returnval = true;
+            }
+            dr.Close();
+            if (returnval == true)
+            {
+                sql = "";
+                cmd = new SqlCommand(sql, conn);
+                //Code to change the active cell on the user table
+            }
+        }
+        return returnval;
+    }
 }

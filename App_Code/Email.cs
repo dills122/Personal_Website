@@ -27,7 +27,7 @@ public class Email
         smtpClient.Host = "mail.dssteele.com";
         smtpClient.Port = 8889;
 
-        NetworkCredential Credentials = new NetworkCredential("Get From", "File On Drive");
+        NetworkCredential Credentials = new NetworkCredential("SYSTEM@dssteele.com", "H1z48Dnt6o8!");
         smtpClient.Credentials = Credentials;
         return smtpClient;
     }
