@@ -59,15 +59,16 @@
         $(document).ready(function () {
             $("#Pass").keyup(function () {
                 var lb = document.getElementById("MetRequirements");
+                var validation = document.getElementById("Validationlb");
                 if (/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test($("#Pass").val()) == true) {
                     lb.innerHTML = "Requirements Met";
                     lb.style.color = "#00e600";
-                    $("#Validationlb").text("true");
+                    validation.value = "true";
                 }
                 else {
                     lb.innerHTML = "Requirements Not Met";
                     lb.style.color = "#ff0000";
-                    $("#Validationlb").text("false");
+                    validation.value = "false";
                 }
             });
         });
@@ -77,7 +78,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="NewUser">
+        <asp:Panel id="NewUser" runat="server">
             <div style="text-align: center">
                 <h2>New User</h2>
             </div>
@@ -120,7 +121,7 @@
                 <div style="text-align: center">
                     <br />
                     <span id="PassMessage" style="text-align: center;"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span id="MetRequirements" style="text-align: center"></span>
+                    <asp:Label id="MetRequirements" style="text-align: center" runat="server"></asp:Label>
                 </div>
                 <br />
                 <div>
@@ -144,9 +145,9 @@
                 </div>
             </div>
 
-        </div>
-        <div id="ForgotPass">
-        </div>
+        </asp:Panel>
+        <asp:Panel runat="server" id="ForgotPass">
+        </asp:Panel>
         <br />
         <div style="text-align: center; margin: auto">
             <asp:Label ID="Errorlb" Visible="false" Text="Complete every field" runat="server" Font-Bold="true" ForeColor="Red" Style="text-align: center"></asp:Label>

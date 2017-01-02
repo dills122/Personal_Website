@@ -10,27 +10,7 @@ using System.Web;
 /// </summary>
 public class Email
 {
-    public Email()
-    {
-        //
-        // TODO: Add constructor logic here
-        //
-    }
-
-    /// <summary>
-    /// Logs into the Mail server
-    /// </summary>
-    /// <returns>returns the smtpclient that allows the user to send emails through the SYSTEM address</returns>
-    protected SmtpClient GetCredentials()
-    {
-        SmtpClient smtpClient = new SmtpClient();
-        smtpClient.Host = "mail.dssteele.com";
-        smtpClient.Port = 8889;
-
-        NetworkCredential Credentials = new NetworkCredential("SYSTEM@dssteele.com", "H1z48Dnt6o8!");
-        smtpClient.Credentials = Credentials;
-        return smtpClient;
-    }
+ 
     /// <summary>
     /// Finish adding the actual email information
     /// </summary>
@@ -41,7 +21,7 @@ public class Email
     {
         try
         {
-            SmtpClient smtp = GetCredentials();
+            SmtpClient smtp = new SmtpClient();
             //Creates the message object
             MailMessage mailMessage = new MailMessage();
             //Sets the To and From info
@@ -64,6 +44,36 @@ public class Email
     }
 
     /// <summary>
+    /// Finish adding the actual email information
+    /// </summary>
+    /// <param name="Subject"></param>
+    /// <param name="body"></param>
+    /// <returns></returns>
+    public Boolean SendQCEmail(string Subject, string body)
+    {
+        try
+        {
+            SmtpClient smtp = new SmtpClient();
+            //Creates the message object
+            MailMessage mailMessage = new MailMessage();
+            //Sets the To and From info
+            mailMessage.To.Add("dylansteele57@gmail.com");
+            mailMessage.From = new MailAddress("SYSTEM@dssteele.com");
+            //sets the body and subject of the message
+            mailMessage.Subject = "Question/Comment - " + Subject;
+            mailMessage.Body = body;
+
+            smtp.Send(mailMessage);
+        }
+        catch (Exception ex)
+        {
+
+        }
+
+        return true;
+    }
+
+    /// <summary>
     /// Send Email to a user
     /// </summary>
     /// <param name="Subject"></param>
@@ -74,7 +84,7 @@ public class Email
     {
         try
         {
-            SmtpClient smtp = GetCredentials();
+            SmtpClient smtp = new SmtpClient();
             //Creates the message object
             MailMessage mailMessage = new MailMessage();
             //Sets the To and From info
@@ -113,7 +123,7 @@ public class Email
             body += "< p > Dylan Steele &#39;s Portfolio</p>";
             body += "< p > dssteele.com </ p > ";
 
-            SmtpClient smtp = GetCredentials();
+            SmtpClient smtp = new SmtpClient();
             //Creates the message object
             MailMessage mailMessage = new MailMessage();
             //Sets the To and From info

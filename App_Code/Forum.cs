@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
+using System.Configuration;
 
 /// <summary>
 /// Summary description for Forum
@@ -24,7 +25,7 @@ public class Forum
     /// <returns></returns>
     public DataSet GetParentComments(int PostID)
     {
-        using (SqlConnection conn = glob.Connect())
+        using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DB"].ToString()))
         {
             conn.Open();
             string sql = "select FCT.UserID, CommentText, FCT.DatePosted FROM FORUM_COMMENT_TREE as FCT inner join FORUM_POST as FP on FP.ReplyGroupID = FCT.GroupID where FP.PostID = @PostID and ParentID is null";
@@ -47,7 +48,7 @@ public class Forum
     /// <returns></returns>
     public DataSet GetChildComments(int ParentID)
     {
-        using (SqlConnection conn = glob.Connect())
+        using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DB"].ToString()))
         {
             conn.Open();
             string sql = "select UserID, CommentText, DatePosted FROM FORUM_COMMENT_TREE where ParentID=@ParentID";
@@ -66,7 +67,7 @@ public class Forum
     {
         string EncryptPass = Encryption.Encrypt(Pass, Encryption.GetPassPhrase());
 
-        using (SqlConnection conn = glob.Connect())
+        using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DB"].ToString()))
         {
             conn.Open();
             string sql = "insert into FORUM_USER (FName,LName,UserName, Email, Password,Created) Values (@FName, @LName, @UserName, @Email, @Pass, @Created)";
@@ -81,10 +82,11 @@ public class Forum
         }
     }
 
-    public bool ActivateUser(string ActivateKey)
+    public static bool ActivateUser(string ActivateKey)
     {
         bool returnval = false;
-        using (SqlConnection conn = glob.Connect())
+        int UserID = 0;
+        using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DB"].ConnectionString))
         {
             conn.Open();
             string sql = "select UserID FROM FORUM_ACTIVATE where ValidationKey=@ValidationKey";
@@ -94,16 +96,58 @@ public class Forum
             
             while(dr.Read())
             {
-                returnval = true;
+                UserID = (int)dr["UserID"];
+                dr.Close();
+                
+                sql = "UPDATE FORUM_ACTIVATE SET Active=1 where UserID=@UserID";
+                cmd = new SqlCommand(sql, conn);
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    returnval = true;
+                }
             }
             dr.Close();
-            if (returnval == true)
-            {
-                sql = "";
-                cmd = new SqlCommand(sql, conn);
-                //Code to change the active cell on the user table
-            }
+            
         }
         return returnval;
+    }
+    public static bool AuthenticateUser(string UserName, string Password)
+    {
+
+        bool Valid = false;
+        using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DB"].ToString()))
+        {
+
+
+            conn.Open();
+            String sql = "select Password, UserID, FName, LName FROM FORUM_USER where UserName=@UserName";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.Add(new SqlParameter("@UserName", UserName));
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    if (Password == Encryption.Decrypt(dr["Password"].ToString(), Encryption.GetPassPhrase().ToString()))
+                    {
+                        Valid = true;
+                        
+                    }
+                    else
+                    {
+                        Valid = false;
+                    }
+                }
+            }
+            else
+            {
+                Valid = false;
+            }
+
+            dr.Close();
+            Global_Functions globl = new Global_Functions();
+            globl.CloseDB(conn);
+        }
+        return Valid;
     }
 }

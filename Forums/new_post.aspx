@@ -23,18 +23,26 @@
                             <br />
                             <div class="sidebar-nav-fixed" id="LeftSide">
                                 <asp:Panel class="well" ID="Login" runat="server">
-                                    <asp:Label Text="UserName:" runat="server"></asp:Label>&nbsp;&nbsp;
+                                    <asp:Panel ID="Loginpnl" runat="server">
+                                        <asp:Label Text="UserName:" runat="server"></asp:Label>&nbsp;&nbsp;
+                           
                             <asp:TextBox ID="UserNametxt" runat="server" Width="100%"></asp:TextBox>
-                                    <br />
-                                    <br />
-                                    <asp:Label Text="Password: " runat="server"></asp:Label>&nbsp;&nbsp;
+                                        <br />
+                                        <br />
+                                        <asp:Label Text="Password: " runat="server"></asp:Label>&nbsp;&nbsp;
+                           
                             <asp:TextBox ID="Passwordtxt" runat="server" TextMode="Password" Width="100%"></asp:TextBox>
-                                    <br />
-                                    <asp:LinkButton ID="ForgotPasslb" runat="server" Text="Forgot Password?" CssClass="forgotPass" OnClick="ForgotPasslb_Click"></asp:LinkButton>
-                                    <br />
-                                    <br />
-                                    <asp:Button Text="Logon" runat="server" ID="Loginbtn" OnClick="Loginbtn_Click" />
+
+                                        <br />
+                                        <br />
+                                        <asp:Button Text="Logon" runat="server" ID="Loginbtn" OnClick="Loginbtn_Click" />
+                                        <br />
+                                        <br />
+                                        <a href="user.aspx?type=1">New User?</a>
+                                    </asp:Panel>
+                                    <asp:Panel ID="LoggedInpnl" runat="server" Visible="false"></asp:Panel>
                                 </asp:Panel>
+                                <br />
                                 <br />
                                 <asp:Panel class="well" ID="Posts" runat="server">
                                 </asp:Panel>
@@ -52,7 +60,7 @@
                         <asp:TextBox ID="PostTitle" runat="server" Width="30%"></asp:TextBox>
                                 <br />
                                 <br />
-                                <div style="width: 50%; margin: auto;" >
+                                <div style="width: 50%; margin: auto;">
                                     <FTB:FreeTextBox ID="ContentBodytb" runat="Server" />
                                 </div>
                                 <br />
@@ -76,6 +84,16 @@
                                 </div>
                                 <br />
                                 <div class="well" id="NotSure">
+                                    <b>Useful Links</b>
+                                    <br />
+                                    <br />
+                                    <a href="new_post.aspx">Create a Post</a>
+                                    <br />
+                                    <a href="post.aspx">Home Page</a>
+                                    <br />
+                                    <a href="contact-me.aspx">Questions</a>
+                                    <br />
+                                    <a href="../main.aspx">Website Front Page</a>
                                 </div>
                                 <!--/.well -->
                             </div>

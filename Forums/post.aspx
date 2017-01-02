@@ -16,27 +16,29 @@
     <form runat="server" id="form1">
         <div class="container-fluid" id="container">
             <div class="row-fluid">
-                <div class="col-md-2 col-lg-2 col-sm-2 col-xs-12 span-2">
+                <asp:Panel class="col-md-2 col-lg-2 col-sm-2 col-xs-12 span-2" runat="server">
                     <br />
                     <br />
                     <div class="sidebar-nav-fixed" id="LeftSide">
                         <asp:Panel class="well" ID="Login" runat="server">
-                            <asp:Label Text="UserName:" runat="server"></asp:Label>&nbsp;&nbsp;
+                            <asp:Panel ID="Loginpnl" runat="server">
+                                <asp:Label Text="UserName:" runat="server"></asp:Label>&nbsp;&nbsp;
                            
                             <asp:TextBox ID="UserNametxt" runat="server" Width="100%"></asp:TextBox>
-                            <br />
-                            <br />
-                            <asp:Label Text="Password: " runat="server"></asp:Label>&nbsp;&nbsp;
+                                <br />
+                                <br />
+                                <asp:Label Text="Password: " runat="server"></asp:Label>&nbsp;&nbsp;
                            
                             <asp:TextBox ID="Passwordtxt" runat="server" TextMode="Password" Width="100%"></asp:TextBox>
-                            <br />
-                            <a href="user.aspx?type=2">Forgot Password?</a>
-                            <br />
-                            <br />
-                            <asp:Button Text="Logon" runat="server" ID="Loginbtn" OnClick="Loginbtn_Click" />
-                            <br />
-                            <br />
-                            <a href="user.aspx?type=1">New User?</a>
+
+                                <br />
+                                <br />
+                                <asp:Button Text="Logon" runat="server" ID="Loginbtn" OnClick="Loginbtn_Click" />
+                                <br />
+                                <br />
+                                <a href="user.aspx?type=1">New User?</a>
+                            </asp:Panel>
+                            <asp:Panel ID="LoggedInpnl" runat="server" Visible="false"></asp:Panel>
                         </asp:Panel>
                         <br />
                         <asp:Panel class="well" ID="Posts" runat="server">
@@ -44,28 +46,43 @@
                         <!--/.well -->
                     </div>
                     <!--/sidebar-nav-fixed -->
-                </div>
-                <!--/span-->
-                <asp:Panel class="col-md-8 col-lg-8 col-sm-8 col-xs-12 span-8" ID="Content" runat="server">
                 </asp:Panel>
                 <!--/span-->
-                <div class="col-md-2 col-lg-2 col-sm-2 col-xs-12 span-2" id="RightSide">
+                <asp:Panel class="col-md-8 col-lg-8 col-sm-8 col-xs-12 span-8" ID="Content" runat="server">
+                    <asp:Panel ID="PostContent" runat="server"></asp:Panel>
+                    <asp:Panel ID="CommentContent" runat="server"></asp:Panel>
+                </asp:Panel>
+                <!--/span-->
+                <asp:Panel class="col-md-2 col-lg-2 col-sm-2 col-xs-12 span-2" ID="RightSide" runat="server">
                     <br />
                     <br />
                     <div class="sidebar-nav-fixed">
-                        <div id="Ad">
+                        <div id="Ad" style="text-align: center">
+                            <br />
+                            <br />
+                            <b>Ads</b>
                         </div>
                         <br />
-                        <div class="well" id="NotSure">
+                        <div class="well" id="NewPost">
+                            <b>Useful Links</b>
+                            <br />
+                            <br />
+                            <a href="new_post.aspx">Create a Post</a>
+                            <br />
+                            <a href="post.aspx">Home Page</a>
+                            <br />
+                            <a href="contact-me.aspx">Questions</a>
+                            <br />
+                            <a href="../main.aspx">Website Front Page</a>
                         </div>
                         <!--/.well -->
                     </div>
                     <!--/sidebar-nav-fixed -->
-                </div>
+                </asp:Panel>
                 <!--/span-->
             </div>
             <!--/row-->
-            
+
         </div>
         <div id="AddEmbededComment" class="modalfooter">
             <span class="close">&times</span>
@@ -81,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
     </form>
     <!--/.fluid-container-->
 </body>

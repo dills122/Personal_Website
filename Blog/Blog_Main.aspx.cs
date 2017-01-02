@@ -46,36 +46,19 @@ public partial class Blog_Blog_Main : System.Web.UI.Page
 
     protected void ConstructTextField(int ID)
     {
-        SqlConnection conn = glob.Connect();
-        conn.Open();
         
-        string sql = "";
-        SqlCommand cmd = new SqlCommand(sql, conn);
-        SqlDataReader dr = cmd.ExecuteReader();
     }
     protected void ConstructCommentArea(int ID)
     {
         
-        //Commentspnl.Controls.Add();
-
-        SqlConnection conn = glob.Connect();
-        conn.Open();
         
-        string sql = "";
-        SqlCommand cmd = new SqlCommand(sql, conn);
-        SqlDataReader dr = cmd.ExecuteReader();
     }
 
     protected void NewCommentbtn_Click(object sender, EventArgs e)
     {
         if (String.IsNullOrWhiteSpace(NewComment.Text.ToString()) == false || String.IsNullOrEmpty(NewComment.Text.ToString()) == false)
         {
-            SqlConnection conn = glob.Connect();
-            conn.Open();
-            //Add the new comment to the database
-            string sql = "";
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            SqlDataReader dr = cmd.ExecuteReader();
+            
         }
         else
         {

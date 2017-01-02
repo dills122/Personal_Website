@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -9,63 +10,59 @@ using System.Web;
 /// </summary>
 public class Global_Functions
 {
-    public string conString = "Data Source=SQL5016.SmarterASP.NET;Initial Catalog=DB_A105F9_WEBSITE;User Id=DB_A105F9_WEBSITE_admin;Password=Skittles122;";
 
 
-    public string getConString()
-    {
-        return conString;
-    }
-    public SqlConnection Connect()
-    {
-        SqlConnection conn = new SqlConnection(conString);
-        return conn;
-    }
     public void CloseDB(SqlConnection conn)
     {
         conn.Close();
     }
 
-    public bool AuthenticateUser(string UserName, string Password)
+    
+
+
+    /// <summary>
+    /// Checks to make sure a user is logged in
+    /// </summary>
+    /// <returns></returns>
+    public  bool CheckAuthentication()
     {
-        
-        bool Valid = false;
-        SqlConnection conn = Connect();
-        conn.Open();
-        String sql = "select Password FROM FORUM_USER where UserName=@UserName";
-        SqlCommand cmd = new SqlCommand(sql, conn);
-        cmd.Parameters.Add(new SqlParameter("@UserName", UserName));
-        SqlDataReader dr = cmd.ExecuteReader();
-        if (dr.HasRows)
+        if (HttpContext.Current.Session["Auth"] != null)
         {
-            while (dr.Read())
+            if ((bool)HttpContext.Current.Session["Auth"] == true)
             {
-                if (Password == Encryption.Decrypt(dr["Password"].ToString(), Encryption.GetPassPhrase().ToString()))
-                {
-                    Valid = true;
-                }
-                else
-                {
-                    Valid = false;
-                }
+                return true;
             }
+            
         }
-        else
-        {
-            Valid = false;
-        }
-
-        dr.Close();
-        CloseDB(conn);
-
-        return Valid;
+        return false;
     }
-
-
-
-    public void SetSession()
+    /// <summary>
+    /// Gets First and Last Name and UserID from UserName
+    /// </summary>
+    /// <param name="UserName"></param>
+    /// <returns>returns concat String 1-FName,2-LName,3-UserID</returns>
+    public string GetUserInfo(string UserName)
     {
-        HttpContext.Current.Session["Auth"] = true;
-        HttpContext.Current.Session["Auth"] = true;
+        string returnString = "";
+        using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DB"].ToString()))
+        {
+            
+            conn.Open();
+            string sql = "select FName,LName,UserID FROM FORUM_USER where UserName=@UserName";
+            SqlCommand cmd = new SqlCommand(sql,conn);
+            cmd.Parameters.Add(new SqlParameter("@UserName", UserName));
+            SqlDataReader dr = cmd.ExecuteReader();
+            while(dr.Read())
+            {
+                returnString = (string)dr["FName"];
+                returnString += "-";
+                returnString += (string)dr["LName"];
+                returnString += "-";
+                returnString += (string)dr["UserID"].ToString();
+            }
+            dr.Close();
+            conn.Dispose();
+        }
+        return returnString;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -29,27 +30,29 @@ public partial class Blog_Manage_Blog : System.Web.UI.Page
 
     protected void EnterCodebtn_Click(object sender, EventArgs e)
     {
-        SqlConnection conn =  glob.Connect();
-        conn.Open();
-        string sql = "select Passcode FROM PASS_CODES where ID=1";
-        SqlCommand cmd = new SqlCommand(sql, conn);
-        SqlDataReader dr = cmd.ExecuteReader();
-        while (dr.Read())
+        using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DB"].ToString()))
         {
-            if (dr["Passcode"].ToString() == PassCode.Text.ToString())
+            conn.Open();
+            string sql = "select Passcode FROM PASS_CODES where ID=1";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
             {
-                Lockpnl.Visible = false;
-                Managepnl.Visible = true;
-                Session["Pass"] = "True";
+                if (dr["Passcode"].ToString() == PassCode.Text.ToString())
+                {
+                    Lockpnl.Visible = false;
+                    Managepnl.Visible = true;
+                    Session["Pass"] = "True";
+                }
+                else
+                {
+                    Errorlb.Visible = true;
+                    Session["Pass"] = "False";
+                }
             }
-            else
-            {
-                Errorlb.Visible = true;
-                Session["Pass"] = "False";
-            }
+            dr.Close();
+            glob.CloseDB(conn);
         }
-        dr.Close();
-        glob.CloseDB(conn);
     }
 
 
@@ -72,21 +75,24 @@ public partial class Blog_Manage_Blog : System.Web.UI.Page
     /// <param name="e"></param>
     protected void Unnamed_Click(object sender, EventArgs e)
     {
-        if(String.IsNullOrEmpty(PostNametb.Text.ToString()) == false || String.IsNullOrEmpty(Bodytb.Text.ToString()) == false )
+        if (String.IsNullOrEmpty(PostNametb.Text.ToString()) == false || String.IsNullOrEmpty(Bodytb.Text.ToString()) == false)
         {
-            SqlConnection conn = glob.Connect();
-            conn.Open();
-            string sql = "insert into BLOG_POSTS (BlogName, Text, Date) Values (@Name, @Text, @Date)";
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.Add(new SqlParameter("@Name", PostNametb.Text.ToString()));
-            cmd.Parameters.Add(new SqlParameter("@Text", Bodytb.Text.ToString()));
-            cmd.Parameters.Add(new SqlParameter("@Date", DateTime.Now.ToString()));
-            cmd.ExecuteNonQuery();
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DB"].ToString()))
+            {
+                conn.Open();
+                string sql = "insert into BLOG_POSTS (BlogName, Text, Date) Values (@Name, @Text, @Date)";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.Add(new SqlParameter("@Name", PostNametb.Text.ToString()));
+                cmd.Parameters.Add(new SqlParameter("@Text", Bodytb.Text.ToString()));
+                cmd.Parameters.Add(new SqlParameter("@Date", DateTime.Now.ToString()));
+                cmd.ExecuteNonQuery();
+            }
         }
         else
         {
 
         }
+        
     }
     /// <summary>
     /// Handles Setting the Session Variables 

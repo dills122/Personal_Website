@@ -75,6 +75,8 @@
                     <li class="active"><a href="\Other_Pages\Mortgage\main.html">Mortgage Amortization</a></li>
                     <li class="active"><a href="\Other_Pages\calculator.aspx">Calculator</a></li>
                     <li class="active"><a href="\Other_Pages\Task_Scheduler.aspx">Task Scheduler System</a></li>
+                    <li class="active"><a href="\Other_Pages\Hashing_Salting.aspx">Hashing Salting Application</a></li>
+                    <li class="active"><a href="\Forums\post.aspx">Forums Example</a></li>
                     <!-- Place to add all of the page links for specific projects -->
                 </ul>
                 <br />

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Forums_main : System.Web.UI.Page
+public partial class Other_Pages_Hashing_Salting : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
