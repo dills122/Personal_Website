@@ -1,12 +1,12 @@
 ﻿body {
-    margin-bottom:50px;
+    margin-bottom:70px;
     background-color: #f2f2f2;
     
 }
 
 #footer{
     position:fixed;
-    height:50px;
+    height:70px;
     background-color: #333333;
     bottom:0px;
     left:0px;

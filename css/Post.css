@@ -1,0 +1,117 @@
+﻿body {
+}
+
+#Left-Side {
+    margin:auto;
+}
+
+#Right-Side {
+    
+    
+}
+
+#NewPostContent {
+    text-align:center;
+}
+
+#container {
+    margin:auto;
+}
+
+#Ad {
+    height:100px;
+    background-color:grey;
+    
+    
+}
+
+.forgotPass {
+    font-size:small;
+}
+#Login {
+    margin: auto;
+    width: 100%;
+}
+
+#NoteSure {
+    
+
+}
+
+#Posts {
+
+}
+
+#CommentBox {
+    width: 100%;
+    height: 6em;
+    
+}
+
+.CommentArea {
+    width: 100%;
+    margin: auto;
+    border: solid 1px black;
+    
+}
+
+.InnerComment {
+    width: 90%;
+    margin: auto;
+    
+}
+#InnerContent {
+    width:100%;
+    margin: auto;
+}
+
+
+#Previewpnl {
+    text-align:left;
+}
+
+
+.modalfooter {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    -webkit-animation-name: fadeIn; /* Fade in the background */
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s
+}
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+    from {bottom: -300px; opacity: 0} 
+    to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+    from {bottom: -300px; opacity: 0}
+    to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+}
+

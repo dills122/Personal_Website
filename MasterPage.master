@@ -74,6 +74,9 @@
                 <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a href="\Other_Pages\Mortgage\main.html">Mortgage Amortization</a></li>
                     <li class="active"><a href="\Other_Pages\calculator.aspx">Calculator</a></li>
+                    <li class="active"><a href="\Other_Pages\Task_Scheduler.aspx">Task Scheduler System</a></li>
+                    <li class="active"><a href="\Other_Pages\Hashing_Salting.aspx">Hashing Salting Application</a></li>
+                    <li class="active"><a href="\Forums\post.aspx">Forums Example</a></li>
                     <!-- Place to add all of the page links for specific projects -->
                 </ul>
                 <br />
@@ -87,8 +90,11 @@
         </div>
         <div class="row">
             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-12" id="footer">
-                <h6 style="color:#ffffff;float:left;">Last Updated 11/12/2016</h6>
+                
                 <h4 style="color:#ffffff;">This website was developed and is maintained by Dylan Steele</h4>
+                <h6 style="color:#ffffff;float:left;">Last Updated 11/12/2016</h6>
+                <h6 style="color:#ffffff;float:right;">Update pushed to Jan 1st, Stay Tuned</h6>
+                <div style="clear: both;"></div>
                  </div>
         </div>
     </div>
