@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>COPOS Maintenance</title>
+    <meta charset="utf-8" />
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .title {
+            font-family: Arial;
+            font-size: 2em;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 1em;
+        }
+
+        .gif-img {
+            margin-top: 2em;
+        }
+
+        body {
+            background-color: #0A0146;
+            color: #ffffff;
+        }
+
+        .description {
+            font-family: Arial;
+            font-size: 1.25em;
+            color: #ffffff;
+            margin-top: 1em;
+        }
+    </style>
+    <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        var dt = getParameterByName("MT")
+        // Set the date we're counting down to
+        var countDownDate = new Date("July 15 2017").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function () {
+
+            // Get todays date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now an the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in an element with id="demo"
+            document.getElementById("count-down").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            // If the count down is over, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("count-down").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <span>Currently Under Maintenance</span>
+        </div>
+        <div class="title">
+            <span>Big Redesign Coming in July</span>
+        </div>
+        <div class="gif-img">
+            <img src="Pictures/giphy-downsized.gif" alt="Computer Shutting Down" />
+        </div>
+        <div class="description" id="count-down">
+            
+        </div>
+    </div>
+</body>
+</html>

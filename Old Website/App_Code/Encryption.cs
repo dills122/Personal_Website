@@ -109,4 +109,14 @@ public static class Encryption
         }
         return randomBytes;
     }
+
+    public static string HashPassword(string plainMessage)
+    {
+        byte[] data = Encoding.UTF8.GetBytes(plainMessage);
+        using (HashAlgorithm sha = new SHA256Managed())
+        {
+            byte[] encryptedBytes = sha.TransformFinalBlock(data, 0, data.Length);
+            return Convert.ToBase64String(sha.Hash);
+        }
+    }
 }
