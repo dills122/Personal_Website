@@ -113,6 +113,8 @@ public class Email
                 body += "Source: " + "<br/><br/>";
                 body += "<pre>" + ex.Source + "</pre>";
 
+                msg.Body = body;
+
                 msg.Subject = "An error has occured on the site" ;
 
                 msg.IsBodyHtml = true;
