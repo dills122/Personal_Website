@@ -1,0 +1,174 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="title.aspx.cs" Inherits="title" %>
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans|Playfair+Display|Space+Mono" rel="stylesheet">
+    <script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/title.js"></script>
+	<link rel="stylesheet" href="css/title.css">
+</head>
+
+<body>
+	<div class="super-container" id="super-container">
+		<div class="row-column" id="title-page">
+			<div class="social-container">
+				<a href="http://www.facebook.com" ><img src="./images/facebook.png" alt="facebook" class="mini-img pulse" /></a>
+				<a href="#" ><img src="./Images/instagram.png" alt="instagram" class="mini-img pulse"/></a>
+				<a href="#" ><img src="./Images/snapchat.png" alt="snapchat" class="mini-img pulse"/></a>
+				<a href="#" ><img src="./Images/linkedin.png" alt="linkedin" class="mini-img pulse"/></a>
+			</div>
+			<div class="title-container">
+				<span class="title-text">Dylan Steele</span><br/><br/>
+				<span class="title-text">Bachelor of Computer Science</span><br/><br/>
+				<span class="title-text">Indiana University of PA</span><br/><br/>
+				<span class="title-text">Pennsylvania State University</span><br/><br/>
+				<span class="title-text">Junior Full Stack Developer</span><br/><br/>
+			</div>
+		</div>
+		<div class="row" id="about-page">
+			<div class="column" id="description-col">
+				<span class="body-title">Languages</span><br/><br/>
+				<div class="text-area">
+					<span>Proficient: C#,VB.NET, ASP.NET, HTML/CSS, SQL, Java, XML, JSON</span><br/><br/>
+					<span>Familiar with: Javascript, JQuery, PHP, C, Python, C++, Shell Scripting, Bootstrap lib</span><br/><br/>
+					<span>Currently learning: Go</span>
+				</div>
+				<br/><br/><br/><br/>
+				<span class="body-title">Experience</span><br/><br/>
+				<div class="text-area">
+					<span>Community Action, Inc.</span><br/>
+					<span>IT Intern -- June 2016 - Current</span><br/>
+					<span>Languagues Used: ASP.NET, C#, VB.NET, JavaScript, JQuery, Ajax, SQL </span><br/><br/>
+					<span>Responsibilities:</span><br/>
+					<ul>
+						<li>	
+							Design, maintain, develop, and document for COPOS Websystem
+						</li>
+						<li>
+							Assist employees with IT issues
+						</li>
+						<li>
+							Create new internal features and systems as needed
+						</li>
+
+					</ul>
+				</div>
+			</div>
+			<div class="column" id="accordian-col">
+				<div class="accordion">
+					<div class="accordion-section">
+						<a class="accordion-section-title" href="#accordion-1">C#</a>
+						<div id="accordion-1" class="accordion-section-content">
+							<a href="#">Stock Trader Simulator</a>
+						</div><!--end .accordion-section-content-->
+						<div id="accordion-1" class="accordion-section-content">
+							<a href="#">Hash Checker</a>
+						</div><!--end .accordion-section-content-->
+						<div id="accordion-1" class="accordion-section-content">
+							<a href="#">Calculator</a>
+						</div><!--end .accordion-section-content-->
+						<div id="accordion-1" class="accordion-section-content">
+							<a href="#">Image to Base64</a>
+						</div><!--end .accordion-section-content-->
+						<div id="accordion-1" class="accordion-section-content">
+							<a href="#">Stock Trader Simulator</a>
+						</div><!--end .accordion-section-content-->
+						<div id="accordion-1" class="accordion-section-content">
+							<a href="#">Hash Checker</a>
+						</div><!--end .accordion-section-content-->
+						<div id="accordion-1" class="accordion-section-content">
+							<a href="#">Calculator</a>
+						</div><!--end .accordion-section-content-->
+						<div id="accordion-1" class="accordion-section-content">
+							<a href="#">Image to Base64</a>
+						</div><!--end .accordion-section-content-->
+					</div><!--end .accordion-section-->
+
+					<div class="accordion-section">
+						<a class="accordion-section-title" href="#accordion-2">Java</a>
+						<div id="accordion-2" class="accordion-section-content">
+							<a href="#">Astroid Invaders </a>
+						</div><!--end .accordion-section-content-->
+						<div id="accordion-2" class="accordion-section-content">
+							<a href="#">...</a>
+						</div><!--end .accordion-section-content-->
+					</div><!--end .accordion-section-->
+
+					<div class="accordion-section">
+						<a class="accordion-section-title" href="#accordion-3">Python</a>
+						<div id="accordion-3" class="accordion-section-content">
+							<a href="#">Random Dungeon Generator</a>
+						</div><!--end .accordion-section-content-->
+					</div><!--end .accordion-section-->
+					<div class="accordion-section">
+						<a class="accordion-section-title" href="#accordion-4">Websites/Websystems</a>
+						<div id="accordion-4" class="accordion-section-content">
+							<a href="#">Task Scheduler</a>
+						</div><!--end .accordion-section-content-->
+						<div id="accordion-4" class="accordion-section-content">
+							<a href="#">Forums Example</a>
+						</div><!--end .accordion-section-content-->
+						<div id="accordion-4" class="accordion-section-content">
+							<a href="#">Amortization Table</a>
+						</div><!--end .accordion-section-content-->
+						<div id="accordion-4" class="accordion-section-content">
+							<a href="#">Previous Website</a>
+						</div><!--end .accordion-section-content-->
+					</div><!--end .accordion-section-->
+				</div><!--end .accordion-->
+			</div>
+		</div>
+		<div class="half-row" id="footer-page">
+			<div class="column-half" id="footer-col">
+				<div class="thick-line"><span>Dylan Steele</span></div>
+				<!-- Link Row Container -->
+				<div class="link-container">
+					<div class="link-cell">
+						<span>Professional</span>
+						<a href="http://www.psu.edu">Penn State University</a>
+						<a href="http://www.iup.edu">Indiana University of Pennsylvania</a>
+						<a href="http://www.jccap.org">Community Action, Inc.</a>
+					</div>
+					<div class="link-cell">
+						<span>Social</span>
+						<a href="https://stackoverflow.com/users/4962223/dylan-steele">Stack Overflow</a>
+						<a href="https://github.com/dills122">Github</a>
+						<a href="www.linkedin.com/in/dssteele122">Linkedin</a>
+					</div>
+					<div class="link-cell">
+						<span>Nice Sites</span>
+						<a href="http://codingheroes.io/resources/">Website Design Tools</a>
+						<a href="https://www.codeproject.com/">Code Project</a>
+						<a href="https://www.dotnetperls.com/">Dot Net Perls</a>
+						<a href="https://www.codeschool.com/">Code School</a>
+					</div>
+				</div>
+				<div style="width: 100%;height: .25em; background-color:#CAEBF2; margin-top: 1em; margin-bottom: 1em;"></div>
+				<div class="link-container">
+					<div class="link-cell">
+						<span>Files</span>
+						<a href="#">Resume</a>
+						<a href="#">Code Example</a>
+						<a href="#">Projects</a>
+					</div>
+				</div>
+			</div>
+			<div class="column-half" id="contact-col">
+				<div class="form-style-5">
+					<form runat="server" id="form1">
+						<fieldset>
+							<legend><span class="number">1</span> Contact Me</legend>
+							<input type="text" name="field1" placeholder="Your Name *" runat="server" id="nametxt">
+							<input type="email" name="field2" placeholder="Your Email *" runat="server" id="emailtxt">
+							<textarea name="field3" placeholder="Body" runat="server" id="bodytxt"></textarea>
+							<asp:Button  ID="Contactbtn" type="submit" Text="Apply" runat="server" OnClick="Contactbtn_Click" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+</body>
+</html>
