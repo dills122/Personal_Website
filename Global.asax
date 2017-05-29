@@ -16,10 +16,12 @@
 
     void Application_Error(object sender, EventArgs e)
     {
-        Exception ex = Server.GetLastError();
+        if(!HttpContext.Current.Request.IsLocal || !HttpContext.Current.IsDebuggingEnabled)
+        {
+            Exception ex = Server.GetLastError();
         // Code that runs when an unhandled error occurs
         Email.SendErrorEmail(ex, null);
-
+        }        
     }
 
     void Session_Start(object sender, EventArgs e)

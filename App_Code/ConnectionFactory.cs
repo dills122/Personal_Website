@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for ConnectionFactory
+/// Gets an SQL Connection
 /// </summary>
 public class ConnectionFactory
 {
