@@ -159,6 +159,12 @@
             border: none;
         }
 
+.error-lb {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    text-align: center;
+    font-size: 1.4em;
+}
+
 /* Pulsing CSS */
 .pulse {
     animation: pulse 3s infinite;
@@ -215,7 +221,7 @@ body {
     height: 100%;
     padding: 0;
     margin: 0 auto;
-    background: #EFEFEF;
+    background: #63626a;
     background-image: url("../Images/stardust.png");
     background-repeat: repeat;
 }
@@ -309,6 +315,8 @@ body {
 .mini-img {
     width: auto;
     height: 100%;
+    background: #63626a;
+    border-radius: 7px;
 }
 
 .column {

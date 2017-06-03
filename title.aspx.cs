@@ -16,7 +16,30 @@ public partial class title : System.Web.UI.Page
     {
         if (!String.IsNullOrEmpty(nametxt.Value) || !String.IsNullOrEmpty(emailtxt.Value) || !String.IsNullOrEmpty(bodytxt.Value))
         {
-            Email.SendContactEmail(emailtxt.Value, bodytxt.Value, nametxt.Value);
+            if(Email.SendContactEmail(emailtxt.Value, bodytxt.Value, nametxt.Value))
+            {
+                SetErrorlb(true);
+            }
+            else
+            {
+                SetErrorlb(false);
+            }
+            Page.MaintainScrollPositionOnPostBack = true;
+        }
+    }
+
+    protected void SetErrorlb(bool type)
+    {
+        if(type == true)
+        {
+            errorlb.Text = "Successful";
+            errorlb.Visible = true;
+            Contactbtn.Visible = false;
+        }
+        else
+        {
+            errorlb.Text = "Failed to send";
+            errorlb.Visible = true; 
         }
     }
 }

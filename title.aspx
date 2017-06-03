@@ -14,10 +14,10 @@
 	<div class="super-container" id="super-container">
 		<div class="row-column" id="title-page">
 			<div class="social-container">
-				<a href="http://www.facebook.com" ><img src="./images/facebook.png" alt="facebook" class="mini-img pulse" /></a>
-				<a href="#" ><img src="./Images/instagram.png" alt="instagram" class="mini-img pulse"/></a>
-				<a href="#" ><img src="./Images/snapchat.png" alt="snapchat" class="mini-img pulse"/></a>
-				<a href="#" ><img src="./Images/linkedin.png" alt="linkedin" class="mini-img pulse"/></a>
+				<a href="http://www.facebook.com"><img src="./images/facebook.png" alt="facebook" class="mini-img" /></a>
+				<a href="#"><img src="./Images/instagram.png" alt="instagram" class="mini-img"/></a>
+				<a href="#"><img src="./Images/snapchat.png" alt="snapchat" class="mini-img"/></a>
+				<a href="#"><img src="./Images/linkedin.png" alt="linkedin" class="mini-img"/></a>
 			</div>
 			<div class="title-container">
 				<span class="title-text">Dylan Steele</span><br/><br/>
@@ -164,6 +164,7 @@
 							<input type="email" name="field2" placeholder="Your Email *" runat="server" id="emailtxt">
 							<textarea name="field3" placeholder="Body" runat="server" id="bodytxt"></textarea>
 							<asp:Button  ID="Contactbtn" type="submit" Text="Apply" runat="server" OnClick="Contactbtn_Click" />
+                            <div class="error-lb"><asp:Label ID="errorlb" runat="server" Visible="false" ></asp:Label></div>
 						</form>
 					</div>
 				</div>
