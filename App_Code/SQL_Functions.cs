@@ -180,5 +180,102 @@ public class SQL_Functions
         }
     }
 
-   
+   public static bool InsertSpecialAnnouc(string title, string description, string postDate)
+    {
+
+        using (SqlConnection conn = ConnectionFactory.DistributeConnection("DB"))
+        {
+            conn.Open();
+            string sql = "INSERT INTO SPECIAL_ANNOUCEMENT (annoucement_title, annoucement_description, post_date, created_date, active) VALUES (@annoucement_title, @annoucement_description, @post_date, @created_date, @active)";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.Add(new SqlParameter("@annoucement_title", title));
+            cmd.Parameters.Add(new SqlParameter("@annoucement_description", description));
+            cmd.Parameters.Add(new SqlParameter("@post_date", postDate));
+            cmd.Parameters.Add(new SqlParameter("@created_date", DateTime.Now.ToShortDateString()));
+            cmd.Parameters.Add(new SqlParameter("@active", 1));
+
+           if( cmd.ExecuteNonQuery() > 0)
+            {
+                conn.Close();
+                conn.Dispose();
+                return true;
+            }
+            conn.Close();
+            conn.Dispose();
+            return false;
+        }
+       
+    }
+
+    public static DataTable GetFeedAnnoucements()
+    {
+
+        using (SqlConnection conn = ConnectionFactory.DistributeConnection("DB"))
+        {
+            conn.Open();
+            string sql = "SELECT ID, annoucement_title, annoucement_description, post_date FROM SPECIAL_ANNOUCEMENT WHERE active=1 and post_date>=GETDATE() ORDER BY post_date DESC";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            using (SqlDataAdapter DA = new SqlDataAdapter(cmd))
+            {
+                DataTable dt = new DataTable();
+                DA.Fill(dt);
+
+                conn.Close();
+                conn.Dispose();
+                return dt;
+            }
+        }
+
+    }
+
+    public static DataTable GetNewestVersions()
+    {
+
+        using (SqlConnection conn = ConnectionFactory.DistributeConnection("DB"))
+        {
+            conn.Open();
+            string sql = "SELECT ID,version,version_title, version_description, post_date FROM VERSION_ANNOUCEMENT WHERE active=1 AND post_date>= GETDATE() ORDER BY post_date DESC";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            using (SqlDataAdapter DA = new SqlDataAdapter(cmd))
+            {
+                DataTable dt = new DataTable();
+                DA.Fill(dt);
+
+                conn.Close();
+                conn.Dispose();
+                return dt;
+            }
+        }
+
+    }
+
+    public static bool InsertVersion(string title, string description,string version, string postDate)
+    {
+
+        using (SqlConnection conn = ConnectionFactory.DistributeConnection("DB"))
+        {
+            conn.Open();
+            string sql = "INSERT INTO VERSION_ANNOUCEMENT (version, version_title,version_description, post_date, created_date, active) VALUES (@version, @version_title,@version_description, @post_date, @created_date, @active)";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.Add(new SqlParameter("@version", version));
+            cmd.Parameters.Add(new SqlParameter("@version_title", title));
+            cmd.Parameters.Add(new SqlParameter("@version_description", description));
+            cmd.Parameters.Add(new SqlParameter("@post_date", postDate));
+            cmd.Parameters.Add(new SqlParameter("@created_date", DateTime.Now.ToShortDateString()));
+            cmd.Parameters.Add(new SqlParameter("@active", 1));
+
+            if (cmd.ExecuteNonQuery() > 0)
+            {
+                conn.Close();
+                conn.Dispose();
+                return true;
+            }
+            conn.Close();
+            conn.Dispose();
+            return false;
+        }
+
+    }
 }

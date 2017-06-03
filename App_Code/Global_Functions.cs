@@ -82,4 +82,21 @@ public class Global_Functions
         HttpContext.Current.Session["LanguageID"] = LanguageID;
         HttpContext.Current.Session["LanguageText"] = LanguageText;
     }
+
+    public static bool CheckAdminLogin()
+    {
+        if(HttpContext.Current.Session["Authenticated"] == null)
+        {
+            return false;
+        }
+        if (HttpContext.Current.Session["Username"] == null)
+        {
+            return false;
+        }
+        if (HttpContext.Current.Session["LastLogin"] == null)
+        {
+            return false;
+        }
+        return true;
+    }
 }
