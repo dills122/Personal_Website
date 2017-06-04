@@ -278,4 +278,93 @@ public class SQL_Functions
         }
 
     }
+
+    public static int InsertProject(string name, string description, int langID, int fileID)
+    {
+        using (SqlConnection conn = ConnectionFactory.DistributeConnection("DB"))
+        {
+            conn.Open();
+            string sql = "";
+            if (fileID == 0)
+            {
+                sql = "INSERT INTO PROJECT ( language_id, project_description, project_name, active) OUTPUT INSERTED.ID VALUES ( @language_id, @project_description, @project_name, @active)";
+            }
+            else
+            {
+                sql = "INSERT INTO PROJECT ( language_id, project_description, project_name, active,file_id) OUTPUT INSERTED.ID VALUES ( @language_id, @project_description, @project_name, @active,@file_id)";
+            }
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.Add(new SqlParameter("@project_name", name));
+            cmd.Parameters.Add(new SqlParameter("@project_description", description));
+            cmd.Parameters.Add(new SqlParameter("@language_id", langID));
+            if(fileID > 0)
+            {
+                cmd.Parameters.Add(new SqlParameter("@file_id", fileID));
+            }        
+            cmd.Parameters.Add(new SqlParameter("@active", 1));
+
+            int ProjID = cmd.ExecuteNonQuery();
+            if (ProjID > 0)
+            {
+                conn.Close();
+                conn.Dispose();
+                return ProjID;
+            }
+            conn.Close();
+            conn.Dispose();
+            return 0;
+        }
+    }
+
+    public static int InsertProjectFile(string name, string webLocation, int fileType)
+    {
+        string serverLoc = webLocation.Replace('/', '\\');
+        using (SqlConnection conn = ConnectionFactory.DistributeConnection("DB"))
+        {
+            conn.Open();
+            string sql = "INSERT INTO PROJECT_FILE(file_name,file_type,server_location,web_location,active) OUTPUT INSERTED.ID VALUES(@file_name,@file_type,@server_location,@web_location,@active)";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.Add(new SqlParameter("@file_name", name));
+            cmd.Parameters.Add(new SqlParameter("@file_type", fileType));
+            cmd.Parameters.Add(new SqlParameter("@server_location", serverLoc));
+            cmd.Parameters.Add(new SqlParameter("@web_location", webLocation));
+            cmd.Parameters.Add(new SqlParameter("@active", 1));
+
+            int id = cmd.ExecuteNonQuery();
+            if ( id > 0)
+            {
+                conn.Close();
+                conn.Dispose();
+                return id;
+            }
+            conn.Close();
+            conn.Dispose();
+            return 0;
+        }
+    }
+
+    public static bool InsertExampleCode(string title, string description, string body, int ProjectID)
+    {
+        using (SqlConnection conn = ConnectionFactory.DistributeConnection("DB"))
+        {
+            conn.Open();
+            string sql = "INSERT INTO EXAMPLE_CODE (ID, example_title, example_description, active, example_body) VALUES (@ID, @example_title, @example_description, @active, @example_body)";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.Add(new SqlParameter("@ID", ProjectID));
+            cmd.Parameters.Add(new SqlParameter("@example_title", title));
+            cmd.Parameters.Add(new SqlParameter("@example_description", description));
+            cmd.Parameters.Add(new SqlParameter("@example_body", body));
+            cmd.Parameters.Add(new SqlParameter("@active", 1));
+
+            if (cmd.ExecuteNonQuery() > 0)
+            {
+                conn.Close();
+                conn.Dispose();
+                return true;
+            }
+            conn.Close();
+            conn.Dispose();
+            return false;
+        }
+    }
 }

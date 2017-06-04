@@ -11,4 +11,37 @@ public partial class Admin_project_admin : System.Web.UI.Page
     {
 
     }
+
+    protected bool InsertIntoDB()
+    {
+        if (CheckPage())
+        {
+            int FileID = 0;
+            if(Fileupload.HasFile)
+            {
+                FileID = SQL_Functions.InsertProjectFile(Fileupload.FileName, "/Files/" + Fileupload.FileName, 1);
+            }
+            int ProjID = SQL_Functions.InsertProject(Nametxt.Text, Descrtxt.Text, Convert.ToInt16(Languageddl.SelectedValue), FileID);
+
+            //TODO Add in Dynamic Examples
+        }
+        return true;
+    }
+
+    protected bool CheckPage()
+    {
+        if(string.IsNullOrEmpty(Nametxt.Text))
+        {
+            return false;
+        }
+        if (string.IsNullOrEmpty(Descrtxt.Text))
+        {
+            return false;
+        }
+        if (Languageddl.SelectedValue == "0")
+        {
+            return false;
+        }
+        return true;
+    }
 }
