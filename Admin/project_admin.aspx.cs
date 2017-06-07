@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -9,9 +10,10 @@ public partial class Admin_project_admin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
 
+    [WebMethod]
     protected bool InsertIntoDB()
     {
         if (CheckPage())
@@ -43,5 +45,16 @@ public partial class Admin_project_admin : System.Web.UI.Page
             return false;
         }
         return true;
+    }
+
+    protected void Submitbtn_Click(object sender, EventArgs e)
+    {
+        Control cntrl = ExampleCode.Controls[1];
+        Control cnt = ExampleCode.Controls[2];
+     //   Control cntrl = ;
+        //if (cntrl != null)
+        //{
+        //    int test = 0;
+        //}
     }
 }
