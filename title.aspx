@@ -5,6 +5,8 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans|Playfair+Display|Space+Mono" rel="stylesheet">
+    <link href="css/ionicons.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
     <script src="js/jquery-3.1.1.min.js"></script>
 	<script src="js/title.js"></script>
 	<link rel="stylesheet" href="css/title.css">
@@ -14,17 +16,18 @@
 	<div class="super-container" id="super-container">
 		<div class="row-column" id="title-page">
 			<div class="social-container">
-				<a href="http://www.facebook.com"><img src="./images/facebook.png" alt="facebook" class="mini-img" /></a>
-				<a href="#"><img src="./Images/instagram.png" alt="instagram" class="mini-img"/></a>
-				<a href="#"><img src="./Images/snapchat.png" alt="snapchat" class="mini-img"/></a>
-				<a href="#"><img src="./Images/linkedin.png" alt="linkedin" class="mini-img"/></a>
+				<a href="http://www.facebook.com" target="_blank"><i class="ion-social-facebook"></i></a>
+				<a href="https://github.com/dills122" target="_blank"><i class="ion-social-github"></i></a>
+				<a href="https://www.instagram.com/dills122/" target="_blank"><i class="ion-social-instagram-outline"></i></a>
+				<a href="https://www.linkedin.com/in/dssteele122/" target="_blank"><i class="ion-social-linkedin"></i></a>
+                <a href="https://stackoverflow.com/users/4962223/dylan-steele" target="_blank"><i class="fa fa-stack-overflow" ></i></a>
 			</div>
 			<div class="title-container">
 				<span class="title-text">Dylan Steele</span><br/><br/>
 				<span class="title-text">Bachelor of Computer Science</span><br/><br/>
 				<span class="title-text">Indiana University of PA</span><br/><br/>
 				<span class="title-text">Pennsylvania State University</span><br/><br/>
-				<span class="title-text">Junior Full Stack Developer</span><br/><br/>
+				<span class="title-text">IT Inern, Web Developer</span><br/><br/>
 			</div>
 		</div>
 		<div class="row" id="about-page">
@@ -61,13 +64,16 @@
 					<div class="accordion-section">
 						<a class="accordion-section-title" href="#accordion-1">C#</a>
 						<div id="accordion-1" class="accordion-section-content">
-							<a href="#">Stock Trader Simulator</a>
+							<a href="https://github.com/dills122/Stock-Trader-Client">Stock Trader Simulator Client</a>
+						</div><!--end .accordion-section-content-->
+                        <div id="accordion-1" class="accordion-section-content">
+							<a href="https://github.com/dills122/TraderEngine">Stock Trader Simulator Engine</a>
 						</div><!--end .accordion-section-content-->
 						<div id="accordion-1" class="accordion-section-content">
 							<a href="#">Hash Checker</a>
 						</div><!--end .accordion-section-content-->
 						<div id="accordion-1" class="accordion-section-content">
-							<a href="#">Calculator</a>
+							<a href="https://github.com/dills122/COSC-319-Calculator">Calculator</a>
 						</div><!--end .accordion-section-content-->
 						<div id="accordion-1" class="accordion-section-content">
 							<a href="#">Image to Base64</a>

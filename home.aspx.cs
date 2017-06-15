@@ -78,15 +78,15 @@ public partial class home : System.Web.UI.Page
             }
 
             //Adds in download links 
-            if (row["server_location"] != DBNull.Value && row["web_location"] != DBNull.Value)
-            {
+            foreach(DataRow FileRow in SQL_Functions.GetCodeFiles((int)row["ID"]).Rows)
+            { 
                 Container.Controls.Add(new LiteralControl("<hr/>"));
                 HtmlGenericControl FileHeader = new HtmlGenericControl("span");
                 FileHeader.InnerText = "Download the Source Files Here:";
                 Container.Controls.Add(FileHeader);
                 Container.Controls.Add(new LiteralControl("<br/><br/>"));
                 HtmlGenericControl a = new HtmlGenericControl("a");
-                a.Attributes.Add("href", row["web_location"].ToString());
+                a.Attributes.Add("href", row["location"].ToString());
                 a.InnerText = row["file_name"].ToString();
                 Container.Controls.Add(a);
             }

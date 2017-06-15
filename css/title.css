@@ -202,8 +202,9 @@
     }
 }
 
-.social-container img:hover {
+.social-container a:hover {
     background-color: #EFEFEF;
+    border-radius:5px;
 }
 
 /* My CSS */
@@ -287,10 +288,21 @@ body {
 .social-container {
     display: block;
     width: 100%;
-    height: 2.5em;
+    height: auto;
     margin: 0 auto;
     padding: 0;
 }
+
+.social-container a {
+    text-decoration:none;
+    color:inherit; 
+    font-size:2em;
+    /*margin:.15em;*/
+
+    padding:.15em;
+}
+
+
 
 .title-container {
     width: 100%;
