@@ -20,6 +20,10 @@ public partial class home : System.Web.UI.Page
             {
                 WriteCodeExample(ExampleID);
             }
+            else
+            {
+                
+            }
         }
     }
     
@@ -77,17 +81,19 @@ public partial class home : System.Web.UI.Page
                 Container.Controls.Add(new LiteralControl("<br/><br/>"));
             }
 
+            Container.Controls.Add(new LiteralControl("<hr/> "));
+
             //Adds in download links 
-            foreach(DataRow FileRow in SQL_Functions.GetCodeFiles((int)row["ID"]).Rows)
+            foreach (DataRow FileRow in SQL_Functions.GetCodeFiles((int)row["ID"]).Rows)
             { 
-                Container.Controls.Add(new LiteralControl("<hr/>"));
+                
                 HtmlGenericControl FileHeader = new HtmlGenericControl("span");
                 FileHeader.InnerText = "Download the Source Files Here:";
                 Container.Controls.Add(FileHeader);
                 Container.Controls.Add(new LiteralControl("<br/><br/>"));
                 HtmlGenericControl a = new HtmlGenericControl("a");
-                a.Attributes.Add("href", row["location"].ToString());
-                a.InnerText = row["file_name"].ToString();
+                a.Attributes.Add("href", FileRow["web_location"].ToString());
+                a.InnerText = FileRow["file_name"].ToString();
                 Container.Controls.Add(a);
             }
 
@@ -104,4 +110,8 @@ public partial class home : System.Web.UI.Page
 
     }
     
+    protected void WriteErrorPage()
+    {
+        //TODO Create Logic to write the 404 Page
+    }
 }

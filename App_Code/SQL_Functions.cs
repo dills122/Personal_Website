@@ -88,7 +88,7 @@ public class SQL_Functions
         using (SqlConnection conn = ConnectionFactory.DistributeConnection("DB"))
         {
             conn.Open();
-            string sql = "SELECT file_name,location,server_location FROM PROJECT_FILE WHERE project_id=@project_id and active=1";
+            string sql = "SELECT file_name,web_location,server_location FROM PROJECT_FILE WHERE project_id=@project_id and active=1";
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.Parameters.Add(new SqlParameter("@project_id", ID));
             using (SqlDataAdapter DA = new SqlDataAdapter(cmd))

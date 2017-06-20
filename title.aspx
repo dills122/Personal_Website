@@ -76,19 +76,7 @@
 							<a href="https://github.com/dills122/COSC-319-Calculator">Calculator</a>
 						</div><!--end .accordion-section-content-->
 						<div id="accordion-1" class="accordion-section-content">
-							<a href="#">Image to Base64</a>
-						</div><!--end .accordion-section-content-->
-						<div id="accordion-1" class="accordion-section-content">
-							<a href="#">Stock Trader Simulator</a>
-						</div><!--end .accordion-section-content-->
-						<div id="accordion-1" class="accordion-section-content">
-							<a href="#">Hash Checker</a>
-						</div><!--end .accordion-section-content-->
-						<div id="accordion-1" class="accordion-section-content">
 							<a href="#">Calculator</a>
-						</div><!--end .accordion-section-content-->
-						<div id="accordion-1" class="accordion-section-content">
-							<a href="#">Image to Base64</a>
 						</div><!--end .accordion-section-content-->
 					</div><!--end .accordion-section-->
 
