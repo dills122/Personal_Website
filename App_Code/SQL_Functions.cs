@@ -67,7 +67,7 @@ public class SQL_Functions
         using (SqlConnection conn = ConnectionFactory.DistributeConnection("DB"))
         {
             conn.Open();
-            string sql = "SELECT TOP 10 ID, project_name  FROM PROJECT ORDER BY ID DESC";
+            string sql = "SELECT TOP 10 ID, project_name FROM PROJECT ORDER BY ID DESC";
             SqlCommand cmd = new SqlCommand(sql, conn);
             using (SqlDataAdapter DA = new SqlDataAdapter(cmd))
             {
@@ -186,7 +186,7 @@ public class SQL_Functions
         using (SqlConnection conn = ConnectionFactory.DistributeConnection("DB"))
         {
             conn.Open();
-            string sql = "SELECT TOP 10 ID, project_name  FROM PROJECT WHERE language_id=@LanguageID ORDER BY ID DESC";
+            string sql = "SELECT TOP 10 ID, project_name FROM PROJECT WHERE language_id=@LanguageID ORDER BY ID DESC";
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.Parameters.Add(new SqlParameter("@LanguageID", LanguageID));
             using (SqlDataAdapter DA = new SqlDataAdapter(cmd))

@@ -38,13 +38,6 @@
 
 <asp:Content ContentPlaceHolderID="MainContentcp" runat="server">
     <asp:Panel ID="contentpnl" runat="server">
-        <div class="large-header"><span>Woop! 404</span></div>
-        <div class="four-img">
-            <img src="Images/zoidberg.png" />
-        </div>
-        <br />
-
-        <div class="smaller-header"><span>Project Not Found</span></div>
     </asp:Panel>
     <div class="bottom-padding">
     </div>

@@ -70,45 +70,33 @@
 							<a href="https://github.com/dills122/TraderEngine">Stock Trader Simulator Engine</a>
 						</div><!--end .accordion-section-content-->
 						<div id="accordion-1" class="accordion-section-content">
-							<a href="#">Hash Checker</a>
+							<a href="home.aspx?XID=1">Hash Checker</a>
 						</div><!--end .accordion-section-content-->
 						<div id="accordion-1" class="accordion-section-content">
-							<a href="https://github.com/dills122/COSC-319-Calculator">Calculator</a>
-						</div><!--end .accordion-section-content-->
-						<div id="accordion-1" class="accordion-section-content">
-							<a href="#">Calculator</a>
+							<a href="https://github.com/dills122/COSC-319-Calculator">Scientific Calculator</a>
 						</div><!--end .accordion-section-content-->
 					</div><!--end .accordion-section-->
 
 					<div class="accordion-section">
 						<a class="accordion-section-title" href="#accordion-2">Java</a>
 						<div id="accordion-2" class="accordion-section-content">
-							<a href="#">Astroid Invaders </a>
-						</div><!--end .accordion-section-content-->
-						<div id="accordion-2" class="accordion-section-content">
-							<a href="#">...</a>
+							<a href="https://github.com/tlutz24/Asteroid-Invaders">Astroid Invaders</a>
 						</div><!--end .accordion-section-content-->
 					</div><!--end .accordion-section-->
 
 					<div class="accordion-section">
 						<a class="accordion-section-title" href="#accordion-3">Python</a>
 						<div id="accordion-3" class="accordion-section-content">
-							<a href="#">Random Dungeon Generator</a>
+							<a href="https://github.com/dills122/Random-Dungeon-Creator">Random Dungeon Generator</a>
 						</div><!--end .accordion-section-content-->
 					</div><!--end .accordion-section-->
 					<div class="accordion-section">
 						<a class="accordion-section-title" href="#accordion-4">Websites/Websystems</a>
 						<div id="accordion-4" class="accordion-section-content">
-							<a href="#">Task Scheduler</a>
-						</div><!--end .accordion-section-content-->
-						<div id="accordion-4" class="accordion-section-content">
-							<a href="#">Forums Example</a>
+							<a href="home.aspx?XID=3">Task Scheduler</a>
 						</div><!--end .accordion-section-content-->
 						<div id="accordion-4" class="accordion-section-content">
 							<a href="#">Amortization Table</a>
-						</div><!--end .accordion-section-content-->
-						<div id="accordion-4" class="accordion-section-content">
-							<a href="#">Previous Website</a>
 						</div><!--end .accordion-section-content-->
 					</div><!--end .accordion-section-->
 				</div><!--end .accordion-->
@@ -145,7 +133,7 @@
 						<span>Files</span>
 						<a href="#">Resume</a>
 						<a href="#">Code Example</a>
-						<a href="#">Projects</a>
+						<a href="home.aspx">Projects</a>
 					</div>
 				</div>
 			</div>
@@ -164,6 +152,18 @@
 				</div>
 			</div>
 		</div>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
+        ga('create', 'UA-84828906-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
 </body>
+    
 </html>
