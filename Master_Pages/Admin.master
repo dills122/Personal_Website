@@ -14,15 +14,18 @@
     <div id="super-container" class=" container-fluid">
         <div class="row" style="margin-top:2em;">
             <div class="col-lg-4 col-md-4" id="AdminLinkBar">
+                <span>Back to Home</span><br />
+                <a href="../home.aspx">Home</a>
+                <br /><br />
                 <span>Project Management</span>
                 <ul>
-                    <li><a href="#">Project Management</a></li>
+                    <li><a href="../Admin/project_admin.aspx">Project Management</a></li>
                     <li><a href="#">Project File Management</a></li>
                 </ul>
                 <span>Feed Management</span>
                 <ul>
                     <li><a href="../Admin/feed_admin.aspx">Feed Post Magagement</a></li>
-                    <li><a href="#">Feed Page Management</a></li>
+                    <li><a href="../Admin/version_admin.aspx">Version Admin</a></li>
                 </ul>
             </div>
             <div class=" col-lg-8 col-md-4" id="AdminContent">

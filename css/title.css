@@ -204,7 +204,7 @@
 
 .social-container a:hover {
     background-color: #EFEFEF;
-    border-radius:5px;
+    border-radius: 5px;
 }
 
 /* My CSS */
@@ -293,14 +293,13 @@ body {
     padding: 0;
 }
 
-.social-container a {
-    text-decoration:none;
-    color:inherit; 
-    font-size:2em;
-    /*margin:.15em;*/
-
-    padding:.15em;
-}
+    .social-container a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 2em;
+        /*margin:.15em;*/
+        padding: .15em;
+    }
 
 
 
@@ -367,21 +366,48 @@ body {
     padding-bottom: .15em;
 }
 
+.thin-line {
+    width: 100%;
+    height: .25em;
+    background-color: #CAEBF2;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
 .link-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     width: 100%;
     margin-top: 1em;
 }
 
 .link-cell {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
     justify-content: flex-start;
+    -ms-flex-item-align: start;
     align-self: flex-start;
 }
 
@@ -427,10 +453,20 @@ body {
 }
 
 .row-small {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     margin: 0;
     width: 100%;
@@ -439,9 +475,17 @@ body {
 }
 
 .half-row-small {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     margin: 0 auto;
     padding-top: 5em;

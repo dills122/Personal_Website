@@ -2,14 +2,14 @@
 
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+<head runat="server">
+    <title>Dylan Steele</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans|Playfair+Display|Space+Mono" rel="stylesheet">
     <link href="css/ionicons.css" rel="stylesheet" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
-    <script src="js/jquery-3.1.1.min.js"></script>
-	<script src="js/title.js"></script>
-	<link rel="stylesheet" href="css/title.css">
+	<!--<link rel="stylesheet" href="css/title.css">-->
+    <link href="css/min/title.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -35,8 +35,8 @@
 				<span class="body-title">Languages</span><br/><br/>
 				<div class="text-area">
 					<span>Proficient: C#,VB.NET, ASP.NET, HTML/CSS, SQL, Java, XML, JSON</span><br/><br/>
-					<span>Familiar with: Javascript, JQuery, PHP, C, Python, C++, Shell Scripting, Bootstrap lib</span><br/><br/>
-					<span>Currently learning: Go</span>
+					<span>Familiar with: Javascript, JQuery, PHP, C, Python, C++, Shell Scripting, Bootstrap lib, Ajax, CSS3 Flexbox</span><br/><br/>
+					<span>Currently learning: Go, CSS Grid-system</span>
 				</div>
 				<br/><br/><br/><br/>
 				<span class="body-title">Experience</span><br/><br/>
@@ -55,6 +55,9 @@
 						<li>
 							Create new internal features and systems as needed
 						</li>
+                        <li>
+                            Desgin, build, and test companies new website
+                        </li>
 
 					</ul>
 				</div>
@@ -117,7 +120,7 @@
 						<span>Social</span>
 						<a href="https://stackoverflow.com/users/4962223/dylan-steele">Stack Overflow</a>
 						<a href="https://github.com/dills122">Github</a>
-						<a href="www.linkedin.com/in/dssteele122">Linkedin</a>
+						<a href="https://www.linkedin.com/in/dssteele122">Linkedin</a>
 					</div>
 					<div class="link-cell">
 						<span>Nice Sites</span>
@@ -127,12 +130,12 @@
 						<a href="https://www.codeschool.com/">Code School</a>
 					</div>
 				</div>
-				<div style="width: 100%;height: .25em; background-color:#CAEBF2; margin-top: 1em; margin-bottom: 1em;"></div>
+				<div class="thin-line"></div>
 				<div class="link-container">
 					<div class="link-cell">
 						<span>Files</span>
-						<a href="#">Resume</a>
-						<a href="#">Code Example</a>
+						<a href="Files/DSteeleresume01-27-17.docx">Resume</a>
+						<a href="Files/CodeExamples.pdf">Code Example</a>
 						<a href="home.aspx">Projects</a>
 					</div>
 				</div>
@@ -152,6 +155,9 @@
 				</div>
 			</div>
 		</div>
+    <script src="js/jquery-3.1.1.min.js"></script>
+	<!--<script src="js/title.js"></script>-->
+    <script src="js/min/title.min.js"></script>
     <script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
@@ -164,6 +170,5 @@
         ga('send', 'pageview');
 
     </script>
-</body>
-    
+</body>       
 </html>

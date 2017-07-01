@@ -67,7 +67,7 @@ public class SQL_Functions
         using (SqlConnection conn = ConnectionFactory.DistributeConnection("DB"))
         {
             conn.Open();
-            string sql = "SELECT TOP 10 ID, project_name FROM PROJECT ORDER BY ID DESC";
+            string sql = "SELECT TOP 10 ID, project_name FROM PROJECT WHERE active=1 ORDER BY ID DESC";
             SqlCommand cmd = new SqlCommand(sql, conn);
             using (SqlDataAdapter DA = new SqlDataAdapter(cmd))
             {
@@ -186,7 +186,7 @@ public class SQL_Functions
         using (SqlConnection conn = ConnectionFactory.DistributeConnection("DB"))
         {
             conn.Open();
-            string sql = "SELECT TOP 10 ID, project_name FROM PROJECT WHERE language_id=@LanguageID ORDER BY ID DESC";
+            string sql = "SELECT TOP 10 ID, project_name FROM PROJECT WHERE language_id=@LanguageID AND active=1 ORDER BY ID DESC";
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.Parameters.Add(new SqlParameter("@LanguageID", LanguageID));
             using (SqlDataAdapter DA = new SqlDataAdapter(cmd))
@@ -234,7 +234,7 @@ public class SQL_Functions
         using (SqlConnection conn = ConnectionFactory.DistributeConnection("DB"))
         {
             conn.Open();
-            string sql = "SELECT ID, annoucement_title, annoucement_description, post_date FROM SPECIAL_ANNOUCEMENT WHERE active=1 and post_date>=GETDATE() ORDER BY post_date DESC";
+            string sql = "SELECT ID, annoucement_title, annoucement_description, post_date FROM SPECIAL_ANNOUCEMENT WHERE active=1 and post_date<=GETDATE() ORDER BY post_date DESC";
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             using (SqlDataAdapter DA = new SqlDataAdapter(cmd))
@@ -256,7 +256,7 @@ public class SQL_Functions
         using (SqlConnection conn = ConnectionFactory.DistributeConnection("DB"))
         {
             conn.Open();
-            string sql = "SELECT ID,version,version_title, version_description, post_date FROM VERSION_ANNOUCEMENT WHERE active=1 AND post_date>= GETDATE() ORDER BY post_date DESC";
+            string sql = "SELECT ID,version,version_title, version_description, post_date FROM VERSION_ANNOUCEMENT WHERE active=1 AND post_date<= GETDATE() ORDER BY post_date DESC";
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             using (SqlDataAdapter DA = new SqlDataAdapter(cmd))
