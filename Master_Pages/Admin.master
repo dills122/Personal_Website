@@ -1,0 +1,37 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin.master.cs" Inherits="Master_Pages_Admin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <div id="super-container" class=" container-fluid">
+        <div class="row" style="margin-top:2em;">
+            <div class="col-lg-4 col-md-4" id="AdminLinkBar">
+                <span>Back to Home</span><br />
+                <a href="../home.aspx">Home</a>
+                <br /><br />
+                <span>Project Management</span>
+                <ul>
+                    <li><a href="../Admin/project_admin.aspx">Project Management</a></li>
+                    <li><a href="#">Project File Management</a></li>
+                </ul>
+                <span>Feed Management</span>
+                <ul>
+                    <li><a href="../Admin/feed_admin.aspx">Feed Post Magagement</a></li>
+                    <li><a href="../Admin/version_admin.aspx">Version Admin</a></li>
+                </ul>
+            </div>
+            <div class=" col-lg-8 col-md-4" id="AdminContent">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
