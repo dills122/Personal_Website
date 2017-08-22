@@ -6,10 +6,13 @@
     <title>Dylan Steele</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans|Playfair+Display|Space+Mono" rel="stylesheet">
-    <link href="css/ionicons.css" rel="stylesheet" />
+    <!--<link href="css/ionicons.css" rel="stylesheet" /> -->
+    <link href="css/ionicons.min.css" rel="stylesheet" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
 	<!--<link rel="stylesheet" href="css/title.css">-->
     <link href="css/min/title.min.css" rel="stylesheet" />
+
+    <script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body>
@@ -56,7 +59,7 @@
 							Create new internal features and systems as needed
 						</li>
                         <li>
-                            Desgin, build, and test companies new website
+                            Design, build, and test companies new website
                         </li>
 
 					</ul>
@@ -150,6 +153,7 @@
 							<textarea name="field3" placeholder="Body" runat="server" id="bodytxt"></textarea>
 							<asp:Button  ID="Contactbtn" type="submit" Text="Apply" runat="server" OnClick="Contactbtn_Click" />
                             <div class="error-lb"><asp:Label ID="errorlb" runat="server" Visible="false" ></asp:Label></div>
+                              <div class="g-recaptcha" style="margin:0 auto" data-sitekey="6LfOYgkUAAAAAJj3V8wdTtRYX50V2WnsUNJKxWVS"></div>
 						</form>
 					</div>
 				</div>
@@ -163,7 +167,7 @@
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
                 (i[r].q = i[r].q || []).push(arguments)
             }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
         })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
         ga('create', 'UA-84828906-1', 'auto');
