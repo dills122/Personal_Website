@@ -1,0 +1,20 @@
+Create a Table of monthly payment breakdown of a loan with PHP
+
+Use PHP for loop to loop through each month
+writes an html table to a desired area on the screen 
+each row has the payment amount, interest paid, principle paid, balance after payment, balance before payment
+
+
+
+<?php
+$P = 200000;
+$i = .05 /12;
+echo "Monthly interest " . $i . "<br/>";
+$n = 120;
+$power = pow((1 + $i), $n);
+echo "Power value ". $power . "<br />";
+echo "<br /><br/>";
+$A = $P * (($i  * $power)/($power - 1));
+
+echo "Monthly Payment: " . $A;
+?>

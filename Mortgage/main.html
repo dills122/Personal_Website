@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title>Mortgage Calculator</title>
+    <link rel="stylesheet" type="text/css" href="main.css"> <script src="valid.js"></script></head>
+
+<body>
+    <form>
+        <div class="table">
+            <div class="row">
+                <div class="cell">
+                    <p>Home Price</p>
+                </div>
+                <div class="cell"> <input type="text" name="HomePrice" id="HomePrice" onkeypress="return isNumberKey(event)"> </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <p>Down Payment</p>
+                </div>
+                <div class="cell"> <input type="text" name="DownPay" id="DownPay" onchange="calcLoan()" onkeypress="return isNumberKey(event)">&nbsp;&nbsp;<input type="text" name="LoanAmount"
+                        id="LoanAmount" disabled> </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <p>Mortgage Term</p>
+                </div>
+                <div class="cell"> <input type="text" name="MortTerm" id="MortTerm" onchange="calcTerm()" onkeypress="return isNumberKey(event)">&nbsp;&nbsp;<input type="text" name="MortTermMonths"
+                        id="MortTermMonths" disabled> </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <p>Annual Interest Rate</p>
+                </div>
+                <div class="cell"> <input type="text" name="AnnInter" id="AnnInter" onkeypress="return isNumberKey(event)"> <b>%</b> </div>
+            </div> <br /> <br />
+            <div class="row"> <input type="submit" name="submit" onclick="OpenPage()" /> </div>
+        </div>
+        <br/>
+        <br/>
+        <div id="amortizationTable"></div>
+    </form>
+</body>
+
+</html>

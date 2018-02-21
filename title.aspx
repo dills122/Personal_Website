@@ -30,22 +30,22 @@
 				<span class="title-text">Bachelor of Computer Science</span><br/><br/>
 				<span class="title-text">Indiana University of PA</span><br/><br/>
 				<span class="title-text">Pennsylvania State University</span><br/><br/>
-				<span class="title-text">IT Inern, Web Developer</span><br/><br/>
+				<span class="title-text">Junior Web Developer (Full Stack)</span><br/><br/>
 			</div>
 		</div>
 		<div class="row" id="about-page">
 			<div class="column" id="description-col">
 				<span class="body-title">Languages</span><br/><br/>
 				<div class="text-area">
-					<span>Proficient: C#,VB.NET, ASP.NET, HTML/CSS, SQL, Java, XML, JSON</span><br/><br/>
-					<span>Familiar with: Javascript, JQuery, PHP, C, Python, C++, Shell Scripting, Bootstrap lib, Ajax, CSS3 Flexbox</span><br/><br/>
-					<span>Currently learning: Go, CSS Grid-system</span>
+					<span>Proficient: C#,VB.NET, ASP.NET, HTML/CSS, SQL, Java, XML, JSON, Javascript, JQuery</span><br/><br/>
+					<span>Familiar with: Vue.js, Sass, PHP, C, Python, C++, Shell Scripting, Bootstrap lib, Ajax, CSS3 Flexbox</span><br/><br/>
+					<span>Currently learning: Go, CSS Grid-system, Firesbase(Authentication, DB)</span>
 				</div>
 				<br/><br/><br/><br/>
 				<span class="body-title">Experience</span><br/><br/>
 				<div class="text-area">
 					<span>Community Action, Inc.</span><br/>
-					<span>IT Intern -- June 2016 - Current</span><br/>
+					<span>Junior Web Developer (Full Stack) -- June 2016 - Aug. 2017</span><br/>
 					<span>Languagues Used: ASP.NET, C#, VB.NET, JavaScript, JQuery, Ajax, SQL </span><br/><br/>
 					<span>Responsibilities:</span><br/>
 					<ul>
@@ -82,27 +82,38 @@
 							<a href="https://github.com/dills122/COSC-319-Calculator">Scientific Calculator</a>
 						</div><!--end .accordion-section-content-->
 					</div><!--end .accordion-section-->
-
 					<div class="accordion-section">
-						<a class="accordion-section-title" href="#accordion-2">Java</a>
+						<a class="accordion-section-title" href="#accordion-2">Javascript</a>
 						<div id="accordion-2" class="accordion-section-content">
+							<a href="https://github.com/dills122/Portfolio-Manager">Portfolio Manager</a>
+						</div><!--end .accordion-section-content-->
+						<div id="accordion-2" class="accordion-section-content">
+							<a href="https://github.com/dills122/Stock-Ticker">Stock Ticker</a>
+						</div><!--end .accordion-section-content-->
+						<div id="accordion-2" class="accordion-section-content">
+							<a href="https://github.com/dills122/Employee-Manager"> Employee Manager</a>
+						</div><!--end .accordion-section-content-->
+					</div><!--end .accordion-section-->
+					<div class="accordion-section">
+						<a class="accordion-section-title" href="#accordion-3">Java</a>
+						<div id="accordion-3" class="accordion-section-content">
 							<a href="https://github.com/tlutz24/Asteroid-Invaders">Astroid Invaders</a>
 						</div><!--end .accordion-section-content-->
 					</div><!--end .accordion-section-->
 
 					<div class="accordion-section">
-						<a class="accordion-section-title" href="#accordion-3">Python</a>
-						<div id="accordion-3" class="accordion-section-content">
+						<a class="accordion-section-title" href="#accordion-4">Python</a>
+						<div id="accordion-4" class="accordion-section-content">
 							<a href="https://github.com/dills122/Random-Dungeon-Creator">Random Dungeon Generator</a>
 						</div><!--end .accordion-section-content-->
 					</div><!--end .accordion-section-->
 					<div class="accordion-section">
-						<a class="accordion-section-title" href="#accordion-4">Websites/Websystems</a>
-						<div id="accordion-4" class="accordion-section-content">
+						<a class="accordion-section-title" href="#accordion-5">Websites/Websystems</a>
+						<div id="accordion-5" class="accordion-section-content">
 							<a href="home.aspx?XID=3">Task Scheduler</a>
 						</div><!--end .accordion-section-content-->
-						<div id="accordion-4" class="accordion-section-content">
-							<a href="#">Amortization Table</a>
+						<div id="accordion-5" class="accordion-section-content">
+							<a href="./Mortgage/main.html">Amortization Table</a>
 						</div><!--end .accordion-section-content-->
 					</div><!--end .accordion-section-->
 				</div><!--end .accordion-->
@@ -137,7 +148,7 @@
 				<div class="link-container">
 					<div class="link-cell">
 						<span>Files</span>
-						<a href="Files/DSteeleresume01-27-17.docx">Resume</a>
+						<a href="Files/DSteeleresume02-21-18W.docx">Resume</a>
 						<a href="Files/CodeExamples.pdf">Code Example</a>
 						<a href="home.aspx">Projects</a>
 					</div>
